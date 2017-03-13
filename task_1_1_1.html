@@ -5,7 +5,7 @@
 	<title>龙族</title>
 </head>
 <body>
-	<div class="main">
+	<main>
 		<h1>龙族（江南著）</h1>
 		<ul>
 			<li><a href="#">龙族Ⅰ火之晨曦</a></li>
@@ -53,7 +53,7 @@
 		</ol>
 		<h3>出版信息</h3>
 		<table border="1px">
-			<caption></caption>
+			<caption>龙族出版相关信息</caption>
 			<thead>
 				<tr>
 					<th>作品名称</th>
@@ -109,29 +109,28 @@
 			<dt>海报四</dt><dd><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2426030475,2149186520&fm=23&gp=0.jpg" alt="dragon_4"/></dd>
 			<dt>海报五</dt><dd><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2300533591,462344590&fm=23&gp=0.jpg" alt="dragon_5"/></dd>	
 		</dl>	
-		
-	</div>
-	<div class="sidebar">
+	</main>
+	<aside>
 		<h2>注册窗口</h2>
 		<form action="task_1_1_1_submit" method="post">
-			<label for="email">请输入邮箱地址：</label><input type="text" name="email" value="邮箱地址按要求格式输入">
+			<label for="email">请输入邮箱地址：</label><input type="text" name="email" placeholder="邮箱地址按要求格式输入" value="">
 			<p></p>
-			<label for="ps">请输入密码：</label><input type="text" name="ps" value="密码请为6-16位英文数字">
+			<label for="ps">请输入密码：</label><input type="text" name="ps" placeholder="密码请为6-16位英文数字" value="">
 			<p></p>
-			<label for="rps">请重复输入密码：</label><input type="text" name="rps" value="密码请为6-16位英文数字">
+			<label for="rps">请重复输入密码：</label><input type="text" name="rps" placeholder="密码请为6-16位英文数字" value="">
 			<p></p>
             <label for="sex">性别：</label><input type="radio" name="sex" value="男" checked="checked">男<input type="radio" name="sex" value="女">女
             <p></p>
             <label for="hobbies">爱好：</label><input type="checkbox" name="hobbies" value="运动">运动<input type="checkbox" name="hobbies" value="艺术">艺术<input type="checkbox" name="hobbies" value="科学">科学
             <p></p>
             <label for="texts">个人描述：</label>
-            <input type="textarea" value="这是一个多行输入框，输入您的个人描述" name="texts">
+            <input type="textarea" value="" name="texts" placeholder="这是一个多行输入框，输入您的个人描述">
             <p></p>
             <input type="submit" name="submit" value="确认提交">
 		</form>
-	</div>
-	<div class="copyright">
+	</aside>
+	<footer>
 		<p>版权所有©</p>
-	</div>
+	</footer>
 </body>
 </html>
