@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>技术产品官网</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,h1,h2,h3,h4,h5,h6,form,input,p,th,td,textarea,button,img{margin:0;padding:0;}
+		h1,h2,h3,h4,h5,h6{font-weight: normal;-webkit-margin-before: 0em;-webkit-margin-after: 0em;-webkit-margin-start: 0px;-webkit-margin-end: 0px;}  
+		img,input,button,textarea,select{border:none;} 
+		img,input,button,select,textarea{outline:none;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration: none;color: #000;} 
+		select {
+			appearance:none;
+			-moz-appearance:none;
+			-webkit-appearance:none;
+		}
+		select::-ms-expand { 
+			display: none; 
+		}
+		.clearfix:after{content:"";display:block;clear:both;}
+		.clearfix{zoom:1}
+		.lf{
+			float: left;
+		}
+		.rf{
+			float: right;
+		}
+
+		body{
+			background-color: #fff;
+			font-family: "微软雅黑";
+			color: #000;
+			width: 1349px;
+		}
+		header{
+			padding: 0px 60px;
+		}
+		.header-left{
+			font-size: 20px;
+			height: 60px;
+			line-height: 60px;
+			background: #fff url('images/1-7/title-logo.png') no-repeat left;
+			padding-left: 36px;
+		}
+		.header-right li{
+			float: left;
+			height: 60px;
+			line-height: 60px;
+			font-size: 15px;
+			margin-left: 45px;
+			width: 65px;
+			text-align: center;
+		}
+		.header-log a{
+			color: #E8504F;
+			background: #fff url('images/1-7/login-logo.png') no-repeat left;
+			padding-left: 20px;
+		}
+		.nav-current{
+			border-bottom: 4px solid #E8504F;
+		}	
+		.nav-current a{
+			color: #E8504F;
+		}
+
+		footer{
+			color: #fff;
+			background-color: #33363F;
+		}
+		.footer-main{
+			padding: 90px 0 70px;
+			margin: 0 auto;
+			text-align: center;
+			width: 520px;
+		}
+		.footer-main h1{
+			height: 30px;
+			line-height: 30px;
+			font-size: 22px;
+		}
+		.footer-main p{
+			height: 20px;
+			line-height: 20px;
+			font-size: 12px;
+		}
+		.footer-main form{
+			margin: 25px 0;
+		}
+		.footer-main form input:first-of-type{
+			width: 420px;
+			height: 40px;
+			padding-left: 10px;
+			font-size: 15px;
+		}
+		.footer-main form input:last-of-type{
+			width: 80px;
+			height: 40px;
+			background-color: #717179;
+			color: #fff;
+			font-size: 15px;
+			letter-spacing: 0.5em;
+			font-weight: bold;
+			margin-left: -10px
+		}
+		.footer-main ul{
+			margin: 0 140px;
+		}
+		.footer-main li{
+			float: left;
+			margin: 0 10px;
+		}			
+		.footer-footer{
+			background-color: #30303A;
+			font-size: 12px;
+			padding: 28px 40px 18px 100px;
+		}
+
+		.sec1{
+			background: url('images/1-7/sec1-bg.jpg') no-repeat;
+			height: 446px;
+			padding-top: 220px;
+			padding-left: 118px;
+			color: #fff;
+		}
+		.sec1 h1{
+			font-size: 60px;
+		}
+		.sec1 p{
+			font-size: 20px;
+			height: 35px;
+			line-height: 35px;
+			opacity: 0.9;
+			padding-left: 5px;
+		}
+		.sec1 button{
+			margin-top: 60px;
+			margin-left: 5px;
+			width: 332px;
+			height: 64px;
+			font-size: 30px;
+			background-color: #E8504F;
+			color: #fff;
+		}
+
+		.sec2 ul{
+			margin-bottom: 70px;
+		}
+		.sec2 ul li{
+			float: left;
+			width: 160px;
+			padding: 0 85px;
+			border-right: #ababab solid 2px;
+			height: 54px;
+			font-size: 13px;
+			color: #717171;
+			line-height: 18px;
+		}
+		.sec2 ul li:last-of-type{
+			border-right: none;
+		}
+		.sec2 ol{
+			margin-top: 50px;
+			margin-bottom: 40px;
+		}
+		.sec2 ol li{
+			float: left;
+			width: 40px;
+			padding: 0 145px;
+		}
+
+		.sec3{
+			background-color: #ededed;
+			text-align: center;
+			font-size: 50px;
+			color: #a1a1a1;
+			padding-top: 90px;
+			padding-bottom: 84px;
+		}
+		.sec3 img{
+			margin: 20px;
+		}
+
+		.sec4{
+			background: url('images/1-7/sec4-bg.jpg') no-repeat;
+			text-align: center;
+			color: #fff;
+			padding-top: 50px;
+			height: 300px;
+		}
+		.sec4 h1{
+			font-size: 22px;
+		}
+		.sec4 .line{
+			width: 32px;
+			height: 3px;
+			background: #fff;
+			margin: 12px 658px 17px 658px;
+		}
+		.sec4 p{
+			font-size: 14px;
+		}
+		.sec4-search{
+			padding: 0 80px;
+			margin-top: 50px;
+			font-size: 14px;
+		}
+		.sec4 ul>li{
+			float: left;
+			margin: 0 30px;
+			width: 235px;
+		}
+		.sec4 ul>li a{
+			color: #a1a1a1;
+			width: 222px;
+			height: 38px;
+			line-height: 38px;
+			background: #fff url('images/1-7/sec4-icon.png') 205px no-repeat;
+			text-align: left;
+			padding-left: 13px;
+			display: block;
+		}
+		.sec4 ul>li:hover{
+			border: #be4e48 solid 1px;
+		}
+		.sec4 ul>li:last-of-type a{
+			background-color: #be4e48;
+			background-image: none;
+			text-align: center;
+			padding-left: 0;
+			letter-spacing: 1.5em;
+			width: 235px;
+			display: block;
+		}
+		.sec4 ul>li:last-of-type a{
+			color: #fff;
+		}
+		.province {
+			border: #be4e48 solid 1px;
+		}
+		.province a{
+			border: none;
+		}
+		.province ol{
+			background-color: #e3e3e5;
+			color: #a1a1a1;
+		}
+		.province ol li{
+			padding:0 30px;
+			height: 26px;
+			line-height: 26px;
+		}
+		.province ol li:hover{
+			color: #fff;
+			background: #be4e48 url('images/1-7/sec4-icon.png') 5px no-repeat;
+		}
+		#province{
+			display: none;
+		}
+		#province:target{
+			display: block;
+		}
+
+		.sec5{
+			padding: 100px 0;
+			background-color: #f7f7f7;
+		}
+		.sec5 ul{
+			text-align: center;
+			padding-left: 172px;
+		}
+		.sec5 ul li{
+			float: left;
+			height: 390px;
+			width: 226px;
+			margin-right: 35px;
+		}
+		.sec5 h1{
+			font-size: 17px;
+			padding: 12px 0;
+			color: #2a2a2a;
+		}
+		.sec5 h2{
+			font-size: 14px;
+			color: #757575;
+		}
+		.sec5 a{
+			display: block;
+		}
+		.sec5 img{
+			padding: 10px;
+			border: #dadada solid 1px;
+		}
+		.shanghai h1{
+			font-size: 22px;
+			letter-spacing: 29px;
+			padding: 0;
+		}
+		.shanghai h2{
+			padding: 10px 0;
+		}
+
+		.sec6-left{
+			background: url('images/1-7/sec6-bg.jpg') no-repeat;
+			width: 851px;
+			height: 436px;
+			text-align: center;
+			padding-top: 120px;
+			color: #fff;
+		}
+		.sec6-left h1{
+			font-size: 46px;
+		}
+		.sec6-left h2{
+			font-size: 120px;
+		}
+		.sec6-left p{
+			font-size: 22px;
+			line-height: 42px;
+		}
+		.sec6-left time{
+			font-size: 20px;
+		}
+		.sec6-right{
+			width: 498px;
+			padding-top: 160px;
+			text-align: center;
+		}
+		.sec6-right h1{
+			font-size: 23px;
+			line-height: 50px;
+		}
+		.sec6-right h1 span:first-of-type{
+			font-style: oblique;
+			display: inline-block;
+			font-size: 25px;
+			padding: 0 8px;
+			color: #7d7d7d;
+		}
+		.sec6-right h1 span:last-of-type{
+			color: #e4656e;
+		}
+		.sec6-right p{
+			font-size: 12px;
+			line-height: 32px;
+			padding: 0 70px;
+			text-align: left;
+			color: #a8a8a8;
+		}
+		.sec6-right button{
+			width: 100px;
+			height: 30px;
+			color: #e4656e;
+			border: #e4656e solid 1px;
+			font-size: 14px;
+			background: #fff;
+			margin: 40px 0 25px;
+		}
+		.sec6-right .tab span{
+			display: inline-block;
+			margin: 0 14px;
+			border: #8f8f8f solid 1px;
+			width: 12px;
+			height: 12px;
+			border-radius: 12px;
+		}
+		.sec6-right .tab span.tab-active{
+			background-color: #8f8f8f;
+		}
+		.sec6 .trangle-left{
+			width: 0;
+			height: 0;
+			border-top: 15px solid transparent;
+			border-right: 30px solid #fff;
+			border-bottom: 15px solid transparent;
+			position: relative;
+			top: 300px;
+			left: 821px;
+		}
+
+		.sec7 {
+			height: 520px;
+		}
+		.sec7-left,.sec7-mid{
+			width: 426px;
+			padding: 160px 0 204px;
+			text-align: center;
+		}
+		.sec7 p{
+			font-size: 20px;
+			line-height: 30px;
+		}
+		.sec7 button{
+			width: 170px;
+			height: 40px;
+			line-height: 38px;
+			font-size: 20px;
+			font-family: "微软雅黑";
+		}
+		.sec7-left{
+			background-color: #e8504f;
+			color: #fff;
+		}
+		.sec7-left button{
+			background-color: #e8504f;
+			border: #fff solid 1px;
+			color: #fff;
+		}
+		.sec7-mid{
+			background-color: #fff;
+		}
+		.sec7-mid button{
+			background-color: #fff;
+			border: #e8504f solid 1px;
+			color: #e8504f;
+		}
+		.sec7 div.line{
+			width: 32px;
+			height: 3px;
+			margin: 26px auto;
+		}
+		.sec7-left div.line{
+			background-color: #fff;
+		}
+		.sec7-mid div.line{
+			background-color: #a7a7a7;
+		}	
+		.sec7 .trangle-right{
+			width: 0;
+			height: 0;
+			border-top: 15px solid transparent;
+			border-left: 30px solid #fff;
+			border-bottom: 15px solid transparent;
+			position: relative;
+			left: 852px;
+			top: 245px;
+		}
+
+		.sec8{
+			padding: 120px 140px;
+		}
+		.sec8-top{
+			text-align: center;
+			padding-bottom: 100px;
+		}
+		.sec8-top h1{
+			font-size: 21px;
+			color: #232323;
+		}	
+		.sec8-top p{
+			font-size: 14px;
+			line-height: 21px;
+			color: #ababab;
+		}
+		.sec8-top div.line{
+			width: 32px;
+			height: 2px;
+			margin: 10px auto;
+			background-color: #e8504f;
+		}
+		.sec8-left{
+			width: 300px;
+		}
+		.sec8-left h2{
+			font-size: 14px;
+			margin-bottom: 20px;
+			color: #5f5d5e;
+			clear: both;
+		}
+		.sec8-left p{
+			font-size: 12px;
+			color: #ababab;
+		}
+		.sec8-left span{
+			display: block;
+			float: right;
+			font-size: 8px;
+			color: #8d8d8d;
+			padding-left: 15px;
+			margin-bottom: 40px;
+			background: url('images/1-7/sec8-icon.png') left 5px no-repeat;
+		}
+		.sec8-right{
+			width: 672px;
+		}
+		.sec8-right	input,.sec8-right textarea{
+			background-color: #ededef;
+			font-size: 13px;
+			padding-left: 17px;
+			width: 293px;
+			height: 40px;
+			line-height: 40px;
+			margin: 0 16px 16px 0;
+			color: #333;
+			font-family: "微软雅黑";
+		}	
+		.sec8-right textarea{
+			height: 120px;
+			width: 623px;
+			resize: none;
+		}
+		.sec8-right input[type*="submit"]{
+			font-size: 14px;
+			width: 640px;
+		}
+	</style>
+</head>
+<body>
+	<header class="clearfix">
+		<h1 class="header-left lf"><a href="#">新世界</a></h1>
+		<ul class="header-right rf">
+			<li class="nav-current"><a href="#">首页</a></li>
+			<li><a href="#">最新活动</a></li>
+			<li><a href="#">项目介绍</a></li>
+			<li><a href="#">爱心社区</a></li>
+			<li><a href="#">关于我们</a></li>
+			<li class="header-log"><a href="#">登录</a></li>
+		</ul>
+	</header>
+	<main>
+		<section class="sec1">
+			<h1>Time of new life</h1>
+			<p>新时代，年轻的人们让我们一起</p>
+			<p>体验新生活，享受新生活</p>
+			<button>开始体验</button>
+		</section>
+		<section class="sec2">
+			<ol class="clearfix">
+			    <li><img src="images/1-7/sec2-icon-1.png" alt=""></li>
+			    <li><img src="images/1-7/sec2-icon-2.png" alt=""></li>
+			    <li><img src="images/1-7/sec2-icon-3.png" alt=""></li>
+			    <li><img src="images/1-7/sec2-icon-4.png" alt=""></li>
+			</ol>
+			<ul class="clearfix">
+				<li>打造全新世界观，让你更爱你的生活</li>
+				<li>丰富多彩的公益活动，发挥新世界的主人公意识</li>
+				<li>时尚的新理念，超前体验的未知生活</li>
+				<li>完善的培养机制，培养你的全新世界观</li>
+			</ul>
+		</section>
+		<section class="sec3">
+			<img src="images/1-7/sec3-icon.png" alt=""/>
+			<p>关于新世界，你不知道的还有什么？</p>
+		</section>
+		<section class="sec4">
+			<h1>查找新世界城市活动信息</h1>
+			<div class="line"></div>
+			<p>每个城市的有不同的活动信息，请自主查询您所需要了解的城市</p>
+			<ul class="sec4-search clearfix">
+				<li>
+					<a>中国</a>
+				</li>
+				<li class="province">
+					<a href="#province">省份</a>
+					<ol id="province">
+						<li>北京市</li>
+						<li>天津市</li>
+						<li>河北省</li>
+						<li>陕西省</li>
+						<li>内蒙古自治区</li>
+						<li>辽宁省</li>
+					</ol>
+				</li>
+				<li>
+					<a>城市</a>
+				</li>
+				<li>
+					<a>搜索</a>
+				</li>
+			</ul>
+		</section>
+		<section class="sec5">
+			<ul class="clearfix">
+				<li><a href="#">
+					<img src="images/1-7/sec5-pic1.jpg" alt="beijing"/>
+					<h1>北京活动</h1>
+					<h2>新社区大联盟</h2>
+				</a></li>
+				<li class="shanghai"><a href="#">
+					<h1>上海活动</h1>
+					<h2>夜上海新景观探索</h2>
+					<img src="images/1-7/sec5-pic2.jpg" alt="shanghai"/>
+				</a></li>
+				<li><a href="#">
+					<img src="images/1-7/sec5-pic3.jpg" alt="shenzhen"/>
+					<h1>深圳活动</h1>
+					<h2>全新海岸线观点站</h2>	
+				</a></li>
+				<li><a href="#">
+					<img src="images/1-7/sec5-pic4.jpg" alt="xianggang"/>
+					<h1>香港活动</h1>
+					<h2>奢侈消费大派送</h2>
+				</a></li>
+			</ul>
+		</section>
+		<section class="sec6 clearfix">
+			<div class="trangle-left"></div>
+			<div class="sec6-left lf">
+				<h1>新世界</h1>
+				<h2>TIME</h2>
+				<p>@新世界-北京</p>
+				<p><time>2017.04.01</time></p>
+			</div>
+			<div class="sec6-right rf">
+				<h1>新世界<span>/</span><span>01</span></h1>
+				<p>新世界是个新世界新世界是个新世界新世界是个新世界新世界是新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界</p>
+				<button>更多详情</button>
+				<div class="tab">
+					<span class="tab-active"></span><span></span><span></span>
+				</div>
+			</div>
+		</section>
+		<section class="sec7 clearfix">
+			<div class="trangle-right"></div>
+			<div class="sec7-left lf">
+				<p>新时代</p>
+				<p>关于热爱生活的我们</p>
+				<div class="line"></div>
+				<button>查看更多</button>
+			</div>
+			<div class="sec7-mid lf">
+				<p>新时代</p>
+				<p>关于热爱生活的我们</p>
+				<div class="line"></div>
+				<button>查看更多</button>
+			</div>
+			<div class="sec7-right rf">
+				<img src="images/1-7/sec7-bg.jpg" alt=""/>
+			</div>
+		</section>
+		<section class="sec8 clearfix">
+			<div class="sec8-top">
+				<h1>成为我们的志愿者</h1>
+				<div class="line"></div>
+				<p>新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情 </p>
+				<p>那就不要犹豫，快来加入我们，成为改变所有人生活的人</p>
+			</div>
+			<div class="sec8-left lf">
+				<h2>新世界志愿者协议</h2>
+				<p>加入新世界志愿者的人员必须遵守中华人民共共和国的 相关法律法规，并且本着平等资源的原则 ......</p>
+				<span>more</span>
+				<h2>新世界志愿者权利</h2>
+				<p>加入新世界志愿者的人员必须遵守中华人民共共和国的 相关法律法规，并且本着平等资源的原则 ......</p>	
+				<span>more</span>
+				<h2>更多条款</h2>
+				<span>more</span>			
+			</div>
+			<div class="sec8-right rf">
+				<form action="" method="" accept-charset="utf-8">
+					<input type="text" name="name" value="" placeholder="姓名:">
+					<input type="text" name="age" value="" placeholder="年龄:">
+					<input type="text" name="tel" value="" placeholder="联系方式:">
+					<input type="text" name="address" value="" placeholder="联系地址:">
+					<textarea placeholder="请简单描述您梦想的生活："></textarea>
+					<input type="submit" name="sec8-sub" value="提交申请"/>
+				</form>
+			</div>
+		</section>		
+	</main>
+	<footer>
+		<div class="footer-main">
+			<h1>联系我们</h1>
+			<p>为了更好的获取我们最新的产品资讯，您可以留下您的电子邮箱快速订阅我们的产品资讯 </p>
+			<p>也可以通过以下任何方式关注我们动态</p>
+			<form action="" method="" accept-charset="utf-8">
+				<input type="text" name="email" value="" placeholder="someone@email.com"/>
+				<input type="submit" name="footer-sub" value="提交"/>
+			</form>
+			<ul class="clearfix">
+				<li><a href="#"><img src="images/1-7/footer-icon-qq.png" alt=""/></a></li>
+				<li><a href="#"><img src="images/1-7/footer-icon-sina.png" alt=""/></a></li>
+				<li><a href="#"><img src="images/1-7/footer-icon-twitter.png" alt=""/></a></li>
+				<li><a href="#"><img src="images/1-7/footer-icon-earth.png" alt=""/></a></li>
+			</ul>
+		</div>
+		<div class="footer-footer clearfix"><span class="lf">@2017新世界</span><span class="rf">Back to top</span></div>
+	</footer>
+	
+</body>
+</html>
