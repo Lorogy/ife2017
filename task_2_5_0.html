@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>队列</title>
+	<style type="text/css">
+		ul{
+			overflow: hidden;
+			height: 150px;
+		}
+		ul>li{
+			float: left;
+			background-color: red;
+			width: 20px;
+			margin: 0 5px;
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<form action="task_2_5_0_submit" method="get" accept-charset="utf-8">
+		<input type="text" id="getIn" placeholder="请输入10-100之间的数字~">
+		<input type="button" value="左侧入" id="leftIn">
+		<input type="button" value="右侧入" id="rightIn">
+		<input type="button" value="左侧出" id="leftOut">
+		<input type="button" value="右侧出" id="rightOut">
+	</form>
+	
+	<ul id="queue"></ul><!-- 空白文本也会算作子结点，所以为保证num以及firstchild与lastchild正确，ul之间不能有空 -->
+
+	<script type="text/javascript">
+		var leftIn=document.getElementById("leftIn");
+		var rightIn=document.getElementById("rightIn");
+		var leftOut=document.getElementById("leftOut");
+		var rightOut=document.getElementById("rightOut");
+		var num=0;console.log(document.getElementById("queue").childNodes.length);
+		leftIn.onclick=function () {
+			if (num>=60) {
+				alert("队列元素最多60个，现已满~");
+			}
+			else{
+				var getIn=document.getElementById("getIn");
+				var newLi=document.createElement("li");
+				var queue=document.getElementById("queue");
+				newLiHeight=getIn.value;
+				if (newLiHeight<=100 && newLiHeight>=10) {
+					newLi.style.height=newLiHeight+"px";
+					newLi.style.marginTop=(150-newLiHeight)+"px";
+					queue.insertBefore(newLi,queue.firstChild);
+					num++;
+				}
+				else{
+					alert("请输入10-100之间的数字~");
+				}
+			}
+			console.log(num);
+		}
+		rightIn.onclick=function () {
+			if (num>=60) {
+				alert("队列元素最多60个，现已满~");
+			}
+			else{
+				var getIn=document.getElementById("getIn");
+				var newLi=document.createElement("li");
+				var queue=document.getElementById("queue");
+				newLiHeight=getIn.value;
+				if (newLiHeight<=100 && newLiHeight>=10) {
+					newLi.style.height=newLiHeight+"px";
+					newLi.style.marginTop=(150-newLiHeight)+"px";
+					queue.appendChild(newLi);
+					num++;
+				}
+				else{
+					alert("请输入10-100之间的数字~");
+				}
+			}
+			console.log(num);
+		}
+		leftOut.onclick=function () {
+			if (num<=0) {
+				num=0;
+			}
+			else{
+				var queue=document.getElementById("queue");
+				queue.firstChild.remove();
+				num--;
+			}
+			console.log(num);
+		}
+		rightOut.onclick=function () {
+			if (num<=0) {
+				num=0;
+			}
+			else{
+				var queue=document.getElementById("queue");
+				queue.lastChild.remove();
+				num--;
+			}
+			console.log(num);
+		}					
+	</script>
+</body>
+</html>
