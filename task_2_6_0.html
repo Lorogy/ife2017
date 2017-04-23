@@ -27,13 +27,32 @@
 
 	<script type="text/javascript">
 		var showIn=document.getElementById("showIn");
-		var keyword=document.getElementById("keyword");
 		var search=document.getElementById("search");
-		var showList=document.getElementById("showList");
+		var arr=new Array();
 		showIn.onclick=function () {
 			var getIn=document.getElementById("getIn");
+		var showList=document.getElementById("showList");
 			var str=getIn.value;
-			var arr=str.split(/[  		，,.。;：|？’‘“”'"\/]/);console.log(arr);
+			var arr=str.split(/\s+/);
+			arr=arr.toString().split(/[.。,，、;：!！?？]/);console.log(arr);
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i]) {
+					var newLi=document.createElement("li");
+					newLi.innerHTML=arr[i];
+					showList.appendChild(newLi);
+				}			
+			}
+		}
+		search.onclick=function () {
+			var keyword=document.getElementById("keyword");
+			var showList=document.getElementById("showList");
+			var key=keyword.value;console.log(key);
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i]==key) {
+					var child=showList.childNodes;console.log(child);
+					child[i].style.backgroundColor="yellow";
+				}
+			}
 		}
 	</script>
 </body>
