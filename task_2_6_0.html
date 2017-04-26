@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>队列</title>
+	<title>正则表达式之模糊查询</title>
 	<style type="text/css">
 		ul>li{
 			float: left;
@@ -29,28 +29,31 @@
 		var showIn=document.getElementById("showIn");
 		var search=document.getElementById("search");
 		var arr=new Array();
+		//点击显示，将输入文本转化为多个内容并显示
 		showIn.onclick=function () {
 			var getIn=document.getElementById("getIn");
-		var showList=document.getElementById("showList");
+			var showList=document.getElementById("showList");
 			var str=getIn.value;
-			var arr=str.split(/\s+/);
-			arr=arr.toString().split(/[.。,，、;：!！?？]/);console.log(arr);
+			var reg=/[，,。.？?!！;；:：'"“”‘’-\s]+/g;
+			var arr=str.split(reg);//将内容间隔为数组
 			for (var i = 0; i < arr.length; i++) {
-				if (arr[i]) {
-					var newLi=document.createElement("li");
-					newLi.innerHTML=arr[i];
-					showList.appendChild(newLi);
-				}			
+				var newLi=document.createElement("li");
+				var showList=document.getElementById("showList");
+				newLi.innerHTML=arr[i];
+				showList.appendChild(newLi);				
 			}
 		}
+		//点击查询，模糊查询
 		search.onclick=function () {
 			var keyword=document.getElementById("keyword");
 			var showList=document.getElementById("showList");
-			var key=keyword.value;console.log(key);
-			for (var i = 0; i < arr.length; i++) {
-				if (arr[i]==key) {
-					var child=showList.childNodes;console.log(child);
-					child[i].style.backgroundColor="yellow";
+			var key=keyword.value;
+			var liList=showList.childNodes;
+			var reg=new RegExp(".*"+key+".*","g");console.log(reg);
+			for (var i = 0; i < liList.length; i++) {
+				var str=liList[i].innerHTML;
+				if (str.match(reg)) {
+					liList[i].style.backgroundColor="yellow";
 				}
 			}
 		}
