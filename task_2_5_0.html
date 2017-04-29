@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>队列</title>
+	<title>队列&排序</title>
 	<style type="text/css">
 		ul{
 			overflow: hidden;
@@ -24,6 +24,7 @@
 		<input type="button" value="右侧入" id="rightIn">
 		<input type="button" value="左侧出" id="leftOut">
 		<input type="button" value="右侧出" id="rightOut">
+		<input type="button" value="排序" id="sortNum">
 	</form>
 	
 	<ul id="queue"></ul><!-- 空白文本也会算作子结点，所以为保证num以及firstchild与lastchild正确，ul之间不能有空 -->
@@ -33,7 +34,9 @@
 		var rightIn=document.getElementById("rightIn");
 		var leftOut=document.getElementById("leftOut");
 		var rightOut=document.getElementById("rightOut");
+		var sortNum=document.getElementById("sortNum");
 		var num=0;console.log(document.getElementById("queue").childNodes.length);
+		//左侧入按钮
 		leftIn.onclick=function () {
 			if (num>=60) {
 				alert("队列元素最多60个，现已满~");
@@ -46,6 +49,7 @@
 				if (newLiHeight<=100 && newLiHeight>=10) {
 					newLi.style.height=newLiHeight+"px";
 					newLi.style.marginTop=(150-newLiHeight)+"px";
+					newLi.innerHTML=newLiHeight;
 					queue.insertBefore(newLi,queue.firstChild);
 					num++;
 				}
@@ -55,6 +59,7 @@
 			}
 			console.log(num);
 		}
+		//右侧入按钮
 		rightIn.onclick=function () {
 			if (num>=60) {
 				alert("队列元素最多60个，现已满~");
@@ -67,6 +72,7 @@
 				if (newLiHeight<=100 && newLiHeight>=10) {
 					newLi.style.height=newLiHeight+"px";
 					newLi.style.marginTop=(150-newLiHeight)+"px";
+					newLi.innerHTML=newLiHeight;
 					queue.appendChild(newLi);
 					num++;
 				}
@@ -76,6 +82,7 @@
 			}
 			console.log(num);
 		}
+		//左侧出按钮
 		leftOut.onclick=function () {
 			if (num<=0) {
 				num=0;
@@ -87,6 +94,7 @@
 			}
 			console.log(num);
 		}
+		//右侧出按钮
 		rightOut.onclick=function () {
 			if (num<=0) {
 				num=0;
@@ -97,7 +105,43 @@
 				num--;
 			}
 			console.log(num);
-		}					
+		}	
+		//排序按钮
+		sortNum.onclick=function () {
+			var queue=document.getElementById("queue");
+			var liList=queue.childNodes;
+			var arr=new Array();
+			for (var i = 0; i < liList.length; i++) {
+				arr[i]=liList[i].innerHTML;
+			}
+			arr=sort(arr);
+			for (var i = 0; i < liList.length; i++) {
+				liList[i].innerHTML=arr[i];
+				liList[i].style.height=arr[i]+"px";
+				liList[i].style.marginTop=(150-arr[i])+"px";				
+			}			
+
+		}
+		//冒泡排序
+		function sort(arr) {
+			var x1=0;
+			var x2=0;
+			var flag=0;
+			for (var i = arr.length; i >=2; i--) {
+				flag=0;
+				for (var j = 0; j <=i-2; j++) {
+					x1=arr[j];
+					x2=arr[j+1];
+					if(x1>x2){
+						arr[j]=x2;
+						arr[j+1]=x1;
+						flag=1;
+					}
+				}
+				if(flag==0)break;
+			}
+			return arr;			
+		}				
 	</script>
 </body>
 </html>
