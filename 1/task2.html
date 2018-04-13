@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>零基础HTML及CSS编码（一）</title>
+  <link rel="stylesheet" type="text/css" href="./../css/normalize.css">
+  <style type="text/css">
+    /*common*/
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    body {
+      background: #dedede;
+      margin-top: -20px;
+      font-family: "微软雅黑";
+    }
+    /*header*/
+    nav {
+      background: #333333 url('http://www.baidu.com/img/superlogo_c4d7df0a003d3db9b65e9ef0fe6da1ec.png?where=super') left center/auto 60px no-repeat;
+      height: 60px;
+    }
+    nav ul>li{
+      float: right;
+      padding: 5px;
+      margin-right: 20px;
+    }
+    nav ul>li>a{
+      display: inline-block;
+      width: 100%;
+      height: 60px;
+      line-height: 60px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 14px;
+    }
+    nav ul>li>a:hover {
+      color:#a7a7a7;
+    }
+    nav ul>li>a.active {
+      color:#a7a7a7;
+    }
+    /*main*/
+    .main {
+      width: 100%;
+    }
+    section,article,aside {
+      box-sizing: border-box;
+      width: 97%;
+      margin: auto;
+      background: #fff;
+      padding: 20px 35px 30px 20px;
+      margin-top: 20px;
+      border-top: 1px solid #cdcdcd;
+      border-left: 1px solid #cdcdcd;
+      border-bottom: 3px solid #848484;
+      border-right: 3px solid #848484;
+    }
+    aside {
+      margin: 40px auto 20px;
+    }
+    /*article*/
+    article h3,article .articleinfo {
+      color: #5C5A5B;
+    }
+    article p {
+      text-indent: 2em;
+      line-height: 150%;
+      text-align: justify;
+    }
+    article ul {
+      list-style: none;
+      line-height: 150%;
+    }
+    article ol {
+      line-height: 150%;
+    }
+    article table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px #ccc solid;
+      text-indent: 10px;
+      line-height: 150%;
+    }
+    article thead {
+      background: #333;
+      color: #fff;
+      text-align: left;
+    }
+    article tfoot {
+      background: #ccc;
+    }
+    /*section*/
+    section dd {
+      box-sizing: border-box;
+      border:1px solid #ccc;
+      width: 122px;
+      text-align: center;
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 14px;
+    }
+    section img {
+      width: 100%;
+      margin-top: 10px;
+    }
+    /*aside*/
+    aside h3 {
+      border-left: 4px solid #ccc;
+      padding-left: 10px;
+      line-height: 200%;
+    }
+    aside form {
+      margin: 0 20px;
+    }
+    aside form table{
+      width: 100%;
+      line-height: 200%;
+    }
+    aside td {
+      box-sizing: border-box;
+      padding-right: 20px;
+      vertical-align: center;
+    }
+    aside form table>tr:first-child {
+      width: 40%;
+    }
+    aside form table>tr:last-child {
+      width: 60%;
+    }
+    aside label {
+      display: inline-block;
+      width: 100%;
+      text-align: right;
+    }
+    aside input{
+      font-size:14px;
+      padding: 5px;
+    }
+    aside p {
+      margin-top: -5px;
+      color: #aaa;
+      font-size: 14px;
+    }
+    aside input:checked {
+      background: #3355D0;
+    }
+    aside select {
+      background: url('./../images/icon/sselect.png') right/15px 100% no-repeat;
+    }
+    aside input[type="checkbox"] {
+      margin:0 5px 0 10px;
+    }
+    aside input[type="checkbox"]:first-of-type {
+      margin-left: 0px;
+    }
+    aside form table tr:last-of-type td:first-of-type {
+      vertical-align: top;
+    }
+    aside textarea {
+      width: 90%;
+    }
+    aside input[type="submit"] {
+      width: 100%;
+      background: #3355D0;
+      color: #fff;
+      font-weight: bold;
+      padding: 10px 0;
+      border-radius: 10px;
+    }
+    /*footer*/
+    footer {
+      background: #000;
+      height: 70px;
+    }
+    footer p {
+      color: #fff;
+      font-size: 12px;
+      text-align: center;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="clearfix">
+        <li><a class="active" href="##">导航链接四</a></li>
+        <li><a href="##">导航链接三</a></li>
+        <li><a href="##">导航链接二</a></li>
+        <li><a href="##">导航链接一</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="main">
+    <article>
+      <h2>文章一级标题</h2>
+      <h3>文章二级标题</h3>
+      <div class="articleinfo"><span>文章作者</span>&nbsp;<span>文章发表时间</span></div>
+      <p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，<a href="http://ife.baidu.com">这里有一个链接到http://ife.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，<b>这里有个粗体字</b>这是一个很长很长的段落，这是一个很长很长的段落</p>
+      <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+      <p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<b>这里有个粗体字</b>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<a href="http://ife.baidu.com">这里有一个链接到http://ife.baidu.com</a>这是一个很长很长的段落</p>
+    </article>
+    <article>
+      <h2>另一篇文章一级标题</h2>
+      <h3>文章二级标题</h3>
+      <div class="articleinfo"><span>文章作者</span>&nbsp;<span>文章发表时间</span></div>
+      <p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，<a href="http://ife.baidu.com">这里有一个链接到http://ife.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，<b>这里有个粗体字</b>这是一个很长很长的段落，这是一个很长很长的段落</p>
+      <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+      <ul>
+        <li>列表项目一</li>
+        <li>列表项目二</li>
+        <li>列表项目三</li>
+      </ul>
+    </article>
+    <section>
+      <h2>图片</h2>
+      <dl>
+        <dd>
+          好看的图片<br>
+          <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+        </dd>
+        <dd>
+          好看的图片<br>
+          <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+        </dd>
+        <dd>
+          好看的图片<br>
+          <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+        </dd>
+        <dd>
+          好看的图片<br>
+          <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+        </dd>
+        <dd>
+          好看的图片<br>
+          <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+        </dd>
+        <dd>
+          好看的图片<br>
+          <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+        </dd>
+        <dd>
+          好看的图片<br>
+          <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+        </dd>
+        <dd>
+          好看的图片<br>
+          <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+        </dd>
+        <dd>
+          好看的图片<br>
+          <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+        </dd>
+        <dd>
+          好看的图片<br>
+          <img src="http://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/fed/ife/ife_tutor/课程配图.3fb31f3e5af7e8d7.jpg" alt="picture">
+        </dd>
+      </dl>
+    </section>
+    <article>
+      <h2>最后一篇文章一级标题</h2>
+      <h3>文章二级标题</h3>
+      <div class="articleinfo"><span>文章作者</span>&nbsp;<span>文章发表时间</span></div>
+      <ol>
+        <li>排名1</li>
+        <li>排名2</li>
+        <li>排名3</li>
+      </ol>
+      <table border="1">
+        下面是一个表格，给表格加了一个border="1"好让你看出是一个表格
+        <thead>
+          <tr>
+            <th>表头</th>
+            <th>表头</th>
+            <th>表头</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>表内容单元格</td>
+            <td>表内容单元格</td>
+            <td><a href="##">操作</a></td>
+          </tr>
+          <tr>
+            <td>表内容单元格</td>
+            <td>表内容单元格</td>
+            <td><a href="##">操作</a></td>
+          </tr>
+          <tr>
+            <td>表内容单元格</td>
+            <td>表内容单元格</td>
+            <td><a href="##">操作</a></td>
+          </tr>
+          <tr>
+            <td>表内容单元格</td>
+            <td>表内容单元格</td>
+            <td><a href="##">操作</a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>总计</td>
+            <td colspan="2">1000</td>
+          </tr>
+        </tfoot>
+      </table>
+    </article>
+    <aside>
+      <h3>这里以后是一个侧栏，这是侧栏的标题</h3>
+      <form>
+        <table>
+          <tr>
+            <td><label>请输入邮箱地址</label></td>
+            <td><input type="email" name="email" value="这是一个文本输入框"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><p>邮箱地址请按照要求格式输入</p></td>
+          </tr>
+          <tr>
+            <td><label>请输入密码</label></td>
+            <td><input type="password" name="password" value="这是一个文本输入框"></td>
+          </tr>
+          <tr>
+            <td><label>请重复输入密码</label></td>
+            <td><input type="password" name="repassword" value="这是一个文本输入框"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><p>密码请为6-16位英文数字</p></td>
+          </tr>
+          <tr>
+            <td><label>性别</label></td>
+            <td><input type="radio" name="male" value="male" checked="checked">男<input type="radio" name="female" value="female">女</td>
+          </tr>
+          <tr>
+            <td><label>城市</label></td>
+            <td><select name="city"><option value="beijing" selected="selected">北京</option><option value="shanghai">上海</option><option value="guangzhou">广州</option></select></td>
+          </tr>
+          <tr>
+            <td><label>爱好</label></td>
+            <td><input type="checkbox" name="sport" value="sport">运动<input type="checkbox" name="art" value="art">艺术<input type="checkbox" name="science" value="science">科学</td>
+          </tr>
+          <tr>
+            <td><label>个人描述</label></td>
+            <td><textarea rows="5">这是一个多行输入框，输入您的个人描述</textarea></td>
+          </tr>
+        </table>
+        <input type="submit" name="submit" value="确认提交">
+      </form>
+    </aside>
+  </div>
+  <footer><p>版权所有&copy;</p></footer>
+</body>
+</html>
