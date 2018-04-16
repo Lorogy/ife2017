@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>零基础HTML及CSS编码（一）</title>
   <link rel="stylesheet" type="text/css" href="./../css/normalize.css">
   <style type="text/css">
@@ -132,7 +133,7 @@
     aside form table>tr:last-child {
       width: 60%;
     }
-    aside label {
+    aside tr td span {
       display: inline-block;
       width: 100%;
       text-align: right;
@@ -146,11 +147,36 @@
       color: #aaa;
       font-size: 14px;
     }
-    aside input:checked {
-      background: #3355D0;
+    /*隐藏原按钮*/
+    aside input[type="radio"] {
+      position: absolute;
+      clip: rect(0 0 0 0);
+    }
+     /*label前生成伪元素，美化版按钮，非勾选状态*/
+    aside input[type="radio"]+label::before {
+      box-sizing: border-box;
+      content: "\a0";/*不换行空格*/
+      display: inline-block;
+      vertical-align: middle;
+      width: 1em;
+      height: 1em;
+      margin-right: .4em;
+      border-radius: 50%;
+      border: 1px solid #2D82D2;
+      text-indent: .15em;
+      line-height: 1;
+    }
+    /*label前生成伪元素，美化版按钮，勾选状态*/
+    aside input[type="radio"]:checked+label::before {
+      box-sizing: border-box;
+      border:0.4em solid #2D82D2;
     }
     aside select {
-      background: url('./../images/icon/sselect.png') right/15px 100% no-repeat;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: url(./../images/icon/sselect.jpg) right no-repeat;
+      padding-right: 15px;
     }
     aside input[type="checkbox"] {
       margin:0 5px 0 10px;
@@ -315,7 +341,7 @@
       <form>
         <table>
           <tr>
-            <td><label>请输入邮箱地址</label></td>
+            <td><span>请输入邮箱地址</span></td>
             <td><input type="email" name="email" value="这是一个文本输入框"></td>
           </tr>
           <tr>
@@ -323,11 +349,11 @@
             <td><p>邮箱地址请按照要求格式输入</p></td>
           </tr>
           <tr>
-            <td><label>请输入密码</label></td>
+            <td><span>请输入密码</span></td>
             <td><input type="password" name="password" value="这是一个文本输入框"></td>
           </tr>
           <tr>
-            <td><label>请重复输入密码</label></td>
+            <td><span>请重复输入密码</span></td>
             <td><input type="password" name="repassword" value="这是一个文本输入框"></td>
           </tr>
           <tr>
@@ -335,19 +361,19 @@
             <td><p>密码请为6-16位英文数字</p></td>
           </tr>
           <tr>
-            <td><label>性别</label></td>
-            <td><input type="radio" name="male" value="male" checked="checked">男<input type="radio" name="female" value="female">女</td>
+            <td><span>性别</span></td>
+            <td><input type="radio" name="sex" value="male" id="male" checked="checked"><label for="male">男</label><input type="radio" name="sex" value="female" id="female"><label for="female">女</label></td>
           </tr>
           <tr>
-            <td><label>城市</label></td>
+            <td><span>城市</span></td>
             <td><select name="city"><option value="beijing" selected="selected">北京</option><option value="shanghai">上海</option><option value="guangzhou">广州</option></select></td>
           </tr>
           <tr>
-            <td><label>爱好</label></td>
-            <td><input type="checkbox" name="sport" value="sport">运动<input type="checkbox" name="art" value="art">艺术<input type="checkbox" name="science" value="science">科学</td>
+            <td><span>爱好</span></td>
+            <td><input type="checkbox" name="hobby" value="sport" id="sport"><label for="sport">运动</label><input type="checkbox" name="hobby" value="art" id="art"><label for="art">艺术</label><input type="checkbox" name="hobby" value="science" id="science"><label for="science">科学</label></td>
           </tr>
           <tr>
-            <td><label>个人描述</label></td>
+            <td><span>个人描述</span></td>
             <td><textarea rows="5">这是一个多行输入框，输入您的个人描述</textarea></td>
           </tr>
         </table>
