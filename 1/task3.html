@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>三栏式布局</title>
+  <link rel="stylesheet" type="text/css" href="./../css/normalize.css">
+  <style type="text/css">
+    * {
+      box-sizing: border-box;
+    }
+    .clearfix:after {content: ".";display: block;clear: both;height: 0;visibility: hidden;}
+    .clearfix {zoom: 1;}
+    .wrapper {
+      margin: 20px;
+      background: #eee;
+    }
+    .wrapper,.team,.teaminfo,.personals {
+      padding: 20px;
+      border: 1px solid #999;
+    }
+    .team,.teaminfo,.personals {
+      background: #fff;
+    }
+    .team {
+      float:left;
+      width: 200px;
+    }
+    .team img,.personals img {
+      width: 80px;
+      height: 80px;
+      border: 1px solid #999;
+    }
+    .teamlogo,.teamname {
+      float: left;
+    }
+    .teamlogo {
+      margin-right: 20px;
+    }
+    .teaminfo {
+      margin: 0 140px 0 220px;
+    }
+    .personals {
+      float: right;
+      width: 120px;
+    }
+    .personals img {
+      margin-bottom: 20px;
+    }
+    .personals img:last-of-type {
+      margin-bottom: 0px;
+    }
+    @media only screen and (max-width: 500px) {
+      .teaminfo {
+        float: left;
+        margin: 0px;
+      }
+      .personals {
+        float: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper clearfix">
+    <div class="team clearfix">
+      <div class="teamlogo">
+        <img src="./../images/1-3/jiangnan.jpg">
+      </div>
+      <div class="teamname">江南</div>
+    </div>
+    <div class="personals">
+      <img src="./../images/1-3/lmf.jpg">
+      <img src="./../images/1-3/czh.jpg">
+      <img src="./../images/1-3/ks.jpg">
+      <img src="./../images/1-3/xm.jpg">
+      <img src="./../images/1-3/cmt.jpg">
+      <img src="./../images/1-3/lmz.jpg">
+      <img src="./../images/1-3/hly.jpg">
+    </div>
+    <div class="teaminfo">
+      <p>《龙族》是作家江南创作的系列长篇魔幻小说，由《龙族Ⅰ火之晨曦》、《龙族Ⅱ悼亡者之瞳》、《龙族Ⅲ黑月之潮》、《龙族Ⅳ奥丁之渊》组成，2009年10月1日开始在小说绘上连载，第一部于2010年04月首次出版，第二部于2011年05月出版，第三部上篇于2012年12月出版，第三部中篇于2013年07月出版，第三部下篇于2013年12月出版，第四部则于2015年10月出版。</p>
+      <p>作品讲叙了少年路明非在申请国外大学时收到了来自芝加哥远郊处的一所私立大学：卡塞尔学院的邀请函，随着路明非同学坐上去往芝加哥的CC1000次列车，踏上了与龙族争锋的征程。</p>
+      <p>作品主题</p>
+      <p>《龙族》的故事中很多大抵就是在说，纵然一个衰小孩的人生中也存在着另一张可能，在另一种人生里他可以成为英雄，《龙族》是写过全世界所有衰小孩的，但不要哀叹，因为江南是想鼓励每个衰小孩，令他们勇敢。因为衰这件事不是注定的，不满足于这世界的人每个都可以如路明非那样成为精神上的“亡命之徒”。</p>
+      <p>作品设定</p>
+      <p>《龙族》的故事框架没有太多新意。平凡现实背后隐藏着神秘世界，普通人主角得知自己不凡的身世，来到聚集超自然力量的学院。《龙族》也从一开始就瞄准了这些作品所针对的读者群：只有较多接触网络、游戏、动漫这些亚文化的都市青少年才能无障碍地进行阅读，不符合这些筛选条件的读者则很难进入文本的情境之中。这些设定看似抬高了作品的阅读门槛，实际上方便了作者对于确定的读者群进行针对性创作。</p>
+      <p>艺术特性</p>
+      <p>《龙族》系列小说是典型的幻想青春小说，《龙族Ⅰ》主要是跟随主角视角的单线性故事结构，而《龙族Ⅱ》则在三人之间切换，再加上部分配角的视角，使得单线性的故事结构变得复杂，更具有可读性。例如《龙族Ⅱ》十六幕至二十幕北京地铁屠龙的故事，地铁龙巢内的楚子航与路明非在绝境中寻找出路，地铁外的恺撒则处理外部的危机，两条线最终交汇。在这一过程中，两条线对于龙巢的信息相互补充叙述，故事线的交织创造悬念，读者可以在故事的推进中获得观看电影一般的阅读快感。并且，在连载体制下，这样的叙事方式也能最大程度地提高读者对“下一期”的期待，从而增加销量。并且由于前两部的成功，《龙族Ⅲ》也在商业化的道路上更进了一步。在人物设定方面有向日本漫画和轻小说的倾向。</p>
+    </div>
+  </div>
+</body>
+</html>
