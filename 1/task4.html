@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>定位和居中问题</title>
+  <link rel="stylesheet" type="text/css" href="./../css/normalize.css">
+  <style type="text/css">
+    /*
+    absolute是相对于上级最近的已定位元素，以下几种都算已定位
+    1.父级样式 relative
+    2.父级样式 absolute
+    3.父级样式top left 等
+    4.<html>
+     */
+    /*
+    垂直居中
+    1.top 50% + margin找补（-[half of height]px）
+    2.top 50% + transform找补（translateY(-50%)）
+    3.flex
+     */
+    .container {
+      width: 400px;
+      height: 200px;
+      background: #ccc;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -100px 0 0 -200px;
+    }
+    .container div {
+      background: #fc0;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+    }
+    .lefttop {
+      border-bottom-right-radius: 50px;
+      left: 0;
+      top: 0;
+    }
+    .rightbottom {
+      border-top-left-radius: 50px;
+      right: 0;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lefttop"></div>
+    <div class="rightbottom"></div>
+  </div>
+</body>
+</html>
