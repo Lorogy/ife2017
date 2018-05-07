@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>常见的技术产品官网的页面架构及样式布局</title>
+  <link rel="stylesheet" type="text/css" href="./../css/normalize.css">
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      text-decoration: none;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    html {
+      background: #ccc;
+    }
+    body {
+      background: #fff;
+      width: 1280px;
+      font-family: SimHei;
+    }
+    /*header*/
+    .header .nav .logo {
+      float: left;
+      font-size: 21px;
+      color: #393A3A;
+      background: url("./../images/1-7/logo-small.png") left no-repeat;
+      padding: 14px 0;
+      padding-left: 35px;
+      margin-left: 59px;
+    }
+    .header ul {
+      list-style: none;
+      float: right;
+      font-size: 14px;
+      margin-right: 59px;
+    }
+    .header ul li {
+      float: left;
+      margin-left: 5px;
+    }
+    .header ul li a {
+      font-family: SimHei;
+      color: #787B83;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      padding: 16px 18px;
+    }
+    .header ul .home {
+      border-bottom: 5px solid #e74f4d;
+    }
+    .header ul .home a {
+      color: #e74f4d;
+    }
+    .header ul .login a {
+      color: #e74f4d;
+      background: url("./../images/1-7/login-logo.png") 18px no-repeat;
+      padding-left: 36px;
+      padding-right: 0;
+    }
+    .header .banner {
+      background: url(./../images/1-7/banner-bg.png) no-repeat;
+      background-size: 100% auto;
+      padding-top: 210px;
+      position: relative;
+      z-index: 1;
+      text-align: left;
+    }
+    .header .banner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      background: rgba(0,0,0,0.2);
+      width: 100%;
+      height: 683px;
+      z-index: -1;
+    }
+    .header .banner .title {
+      margin-left: 117px;
+      margin-bottom: 20px;
+      font-size: 60px;
+      color: #fff;
+    }
+    .header .banner .subtitle {
+      margin-left: 124px;
+      margin-bottom: 60px;
+      font-size: 21px;
+      line-height: 150%;
+      color: #fffdfd;
+      width: 295px;
+    }
+    .header .banner button {
+      font-family: SimHei;
+      margin-left: 126px;
+      margin-bottom: 197px;
+      width: 331px;
+      height: 65px;
+      font-size: 30px;
+      color: #fff;
+      line-height: 65px;
+      background: #e74f4d;
+      border-style: none;
+    }
+    /*main*/
+    /*footer*/
+    .footer {
+      background: #32353e;
+      color: #fff;
+      padding-top: 90px;
+    }
+    .footer .friendlink {
+      width: 40%;
+      margin: 0 auto;
+    }
+    .footer .friendlink .title {
+      font-size: 21px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .footer .friendlink .subtitle {
+      font-size: 12px;
+      text-align: center;
+      line-height: 150%;
+      margin-bottom: 30px;
+    }
+    .footer .friendlink form input {
+      font-family: SimHei;
+      width: 80%;
+      height: 41px;
+      padding: 10px;
+      border-style: none;
+    }
+    .footer .friendlink form label {
+      display: inline-block;
+      width: 20%;
+      background: #717179;
+    }
+    .footer .friendlink form label a {
+      margin: 0;
+      font-family: SimHei;
+      font-size: 15px;
+      display: inline-block;
+      width: 100%;
+      height: 41px;
+      line-height: 41px;
+      color: #fff;
+      text-align: center;
+    }
+    .footer .friendlink ul {
+      list-style: none;
+      margin: 30px auto 60px;
+      position: absolute;
+      left: 50%;
+      margin-left: -100px;
+    }
+    .footer .friendlink ul li {
+      float: left;
+      margin: 0 10px;
+      width: 30px;
+      height: 30px;
+    }
+    .footer .friendlink ul>li:nth-of-type(1) {
+      background: url("./../images/1-7/footer-icon-qq.png") center no-repeat;
+    }
+    .footer .friendlink ul>li:nth-of-type(2) {
+      background: url("./../images/1-7/footer-icon-sina.png") center no-repeat;
+    }
+    .footer .friendlink ul>li:nth-of-type(3) {
+      background: url("./../images/1-7/footer-icon-twitter.png") center no-repeat;
+    }
+    .footer .friendlink ul>li:nth-of-type(4) {
+      background: url("./../images/1-7/footer-icon-earth.png") center no-repeat;
+    }
+    .footer .copyright {
+      background: #2f2f38;
+      margin-top: 120px;
+      padding: 30px 0 20px;
+      font-size: 12px;
+    }
+    .footer .copyright span {
+      display: inline-block;
+    }
+    .footer .copyright .left {
+      float: left;
+      margin-left: 100px;
+    }
+    .footer .copyright .right {
+      float: right;
+      margin-right: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <div class="nav clearfix">
+        <div class="logo">新世界</div>
+        <ul>
+          <li class="home"><a href="##">首页</a></li>
+          <li><a href="##">最新活动</a></li>
+          <li><a href="##">项目介绍</a></li>
+          <li><a href="##">爱心社区</a></li>
+          <li><a href="##">关于我们</a></li>
+          <li class="login"><a href="##">登录</a></li>
+        </ul>
+      </div>
+      <div class="banner">
+        <div class="title">Time of new life</div>
+        <div class="subtitle">新时代，年轻的人们让我们一起体验新生活，享受新生活</div>
+        <button>开始体验</button>
+      </div>
+    </div>
+    <div class="main">
+      <div class="first">
+        <div class="one">
+          <img src="./../images/1-7/part1-icon-1.png" alt="one">
+          <p>打造全新世界观，让你更爱你的生活</p>
+        </div>
+        <div class="two">
+          <img src="./../images/1-7/part1-icon-2.png" alt="two">
+          <p>丰富多彩的公益活动，发挥新世界的主人公意识</p>
+        </div>
+        <div class="three">
+          <img src="./../images/1-7/part1-icon-3.png" alt="three">
+          <p>时尚新概念，超前体验未知的生活</p>
+        </div>
+        <div class="four">
+          <img src="./../images/1-7/part1-icon-4.png" alt="four">
+          <p>完善的培养机制，培养你全新的世界观</p>
+        </div>
+      </div>
+      <div class="second">
+        <img src="./../images/1-7/logo-big.png" alt="logo">
+        <p>关于新世界，你不知道的还有什么？</p>
+      </div>
+      <div class="third">
+        <div class="title">查找新世界城市活动信息</div>
+        <div class="hr"></div>
+        <div class="subtitle">每个城市有不同的活动信息，其自主查询您所需要了解的城市</div>
+        <form>
+          <input type="text" name="country" placeholder="中国">
+          <input type="text" name="province" placeholder="省份">
+          <input type="text" name="city" placeholder="城市">
+          <input type="submit" name="search" value="搜索">
+          <ul class="province">
+            <li>北京市</li>
+            <li>天津市</li>
+            <li>河北省</li>
+            <li>陕西省</li>
+            <li>内蒙古自治区</li>
+            <li>辽宁省</li>
+          </ul>
+        </form>
+      </div>
+      <div class="fourth">
+        <div class="one">
+          <img src="./../images/1-7/part4-pic1.png" alt="one">
+          <p>北京活动</p>
+          <p>新社区大联盟</p>
+        </div>
+        <div class="two">
+          <p>上海活动</p>
+          <p>夜上海新景观探索</p>
+          <img src="./../images/1-7/part4-pic2.png" alt="two">
+        </div>
+        <div class="three">
+          <img src="./../images/1-7/part4-pic3.png" alt="three">
+          <p>深圳活动</p>
+          <p>全新海岸线观站点</p>
+        </div>
+        <div class="four">
+          <img src="./../images/1-7/part4-pic4.png" alt="four">
+          <p>香港活动</p>
+          <p>奢侈消费大放送</p>
+        </div>
+      </div>
+      <div class="fifth">
+        <div class="left">
+          <p>新世界</p>
+          <p>TIME</p>
+          <p>&copy;新世界&nbsp;-&nbsp;北京</p>
+          <p>2018.04.01</p>
+        </div>
+        <div class="right">
+          <div class="title">新世界/<span>01</span></div>
+          <p>新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界</p>
+          <button>更多详情</button>
+          <div class="tag"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="sixth">
+        <div class="left">
+          <p>新时代</p>
+          <p>关于爱生活的我们</p>
+          <div class="hr"></div>
+          <button>查看更多</button>
+        </div>
+        <div class="center">
+          <p>新时代</p>
+          <p>关于爱生活的我们</p>
+          <div class="hr"></div>
+          <button>查看更多</button>
+        </div>
+        <div class="right">
+          <img src="./../images/1-7/part6-bg.png" alt="img">
+          <div class="triangle"></div>
+        </div>
+      </div>
+      <div class="seventh">
+        <div class="top">
+          <div class="title">成为我们的志愿者</div>
+          <div class="subtitle">新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情 那就不要犹豫，快来加入我们，成为改变所有人生活的人</div>
+        </div>
+        <div class="bottom">
+          <div class="left">
+            <div class="one">
+              <div class="title">新世界志愿者协议</div>
+              <div class="subtitle">加入新世界志愿者的人员必须遵守中华人民共共和国的 相关法律法规，并且本着平等资源的原则 ......</div>
+              <div class="more">more</div>
+            </div>
+            <div class="two">
+              <div class="title">新世界志愿者权利</div>
+              <div class="subtitle">新世界志愿者享受新世界内部所有资源共享的权利，并 且享受所在四新世界活动的优先参与资格</div>
+              <div class="more">more</div>
+            </div>
+            <div class="three">
+              <div class="title">更多条款</div>
+              <div class="more">more</div>
+            </div>
+          </div>
+          <div class="right">
+            <form>
+              <table>
+                <tr>
+                  <td><label for="name">姓名：<input type="text" name="name"></label></td>
+                  <td><label for="age">年龄：<input type="text" name="age"></label></td>
+                </tr>
+                <tr>
+                  <td><label for="tel">联系方式：<input type="text" name="tel"></label></td>
+                  <td><label for="address">联系地址：<input type="text" name="address"></label></td>
+                </tr>
+                <tr><td colspan="2"><textarea cols="50" rows="10">请简单描述您梦想的生活:</textarea></td></tr>
+                <tr><td colspan="2"><input type="submit" name="submitbtn" value="提交申请"></td></tr>
+              </table>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="friendlink">
+        <p class="title">联系我们</p>
+        <p class="subtitle">为了更好的获取我们最新的产品资讯，您可以留下您的电子邮箱快速订阅我们的产品资讯 也可以通过以下任何方式关注我们动态</p>
+        <form action="serve.php" method="post">
+          <input type="email" name="email" placeholder="someone@emial.com"><label for="email"><a href="##">提交</a></label>
+        </form>
+        <ul class="clearfix">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="copyright clearfix">
+        <span class="left">&copy;2018新世界</span>
+        <span class="right">Back&nbsp;to&nbsp;top</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
