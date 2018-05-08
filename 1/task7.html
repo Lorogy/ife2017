@@ -11,6 +11,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: SimHei;
     }
     a {
       text-decoration: none;
@@ -28,8 +29,7 @@
     }
     body {
       background: #fff;
-      width: 1280px;
-      font-family: SimHei;
+      min-width: 1280px;
     }
     /*header*/
     .header .nav .logo {
@@ -115,6 +115,401 @@
       border-style: none;
     }
     /*main*/
+    /*first*/
+    .main .first>div {
+      float: left;
+      width: 24.9%;
+      padding: 40px 0 60px;
+      color: #231415;
+      font-size: 14px;
+      position: relative;
+    }
+     .main .first>div img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+     }
+    .main .first>div p {
+      margin-top: 80px;
+      padding: 5px 80px 16px;
+      text-align: center;
+      border-right: 2px solid #999;
+    }
+    .main .first>div:last-of-type p {
+      border-right-style: none;
+    }
+    /*second*/
+    .main .second {
+      width: 100%;
+      height: 360px;
+      background: #ededed;
+      position: relative;
+    }
+    .main .second img {
+      position: absolute;
+      top: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .main .second p {
+      font-size: 40px;
+      color: #a2a2a2;
+      position: absolute;
+      left: 50%;
+      bottom: 80px;
+      transform: translateX(-50%);
+    }
+    /*third*/
+    .main .third {
+      background: url("./../images/1-7/part3-bg.png") no-repeat;
+      background-size: 100% auto;
+      height: 340px;
+      color: #fff;
+      padding-top: 50px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .main .third::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,0,0,0.05);
+      z-index: -1;
+    }
+    .main .third .title {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+    .main .third .hr {
+      width: 32px;
+      height: 3px;
+      background: #fff;
+      position: absolute;
+      left: 50%;
+      margin-left: -16px;
+    }
+    .main .third .subtitle {
+      font-size: 12px;
+      margin: 29px auto 50px;
+    }
+    .main .third form {
+      width: 1016px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .main .third form div {
+      float: left;
+    }
+    .main .third form div input {
+      width: 239px;
+      height: 36px;
+      border-style: none;
+      font-family: SimHei;
+    }
+    .main .third form div input[type="text"] {
+      font-size: 12px;
+      padding-left: 10px;
+      margin-right: 20px;
+      background: #fff url("./../images/1-7/li-icon.png") 213px center no-repeat;
+    }
+    .main .third form div input[type="submit"] {
+      background: #bf4e48;
+      color: #fff;
+      font-size: 16px;
+    }
+    .main .third form div input[name="province"] {
+      border: 1px solid #bf4e48;
+      border-bottom-style: none;
+    }
+    .main .third form div ul {
+      width: 239px;
+      padding-bottom: 20px;
+      border: 1px solid #bf4e48;
+      border-top-style: none;
+      background: #e3e3e5;
+      list-style: none;
+    }
+    .main .third form div ul li {
+      height: 26px;
+      line-height: 26px;
+      color: #777;
+      font-size: 14px;
+      text-align: left;
+      padding-left: 30px;
+    }
+    .main .third form div ul .selected {
+      color: #fff;
+      background: #bf4e48 url("./../images/1-7/li-icon.png") 6px center no-repeat;
+    }
+    /*fourth*/
+    .main .fourth {
+      height: 606px;
+      background: #f8f8f8;
+      padding-top: 100px;
+      position: relative;
+    }
+    .main .fourth .container {
+      width: 1060px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .main .fourth .container>div {
+      float: left;
+      margin: 0 20px;
+    }
+    .main .fourth .container>div img {
+      border: 1px solid #e3e3e3;
+      padding: 10px;
+    }
+    .main .fourth .container>div p {
+      width: 225px;
+      text-align: center;
+      line-height: 200%;
+    }
+    .main .fourth .container>div p:first-of-type {
+      color: #313131;
+      font-size: 16px;
+    }
+    .main .fourth .container>div p:last-of-type {
+      color: #a2a2a2;
+      font-size: 12px;
+    }
+    .main .fourth .container .two p:first-of-type {
+      letter-spacing: 1.5em;
+      font-size: 22px;
+      line-height: 150%;
+    }
+    /*fifth*/
+    .main .fifth>div {
+      height: 567px;
+    }
+    .main .fifth .left {
+      float: left;
+      width: 851px;
+      background: url("./../images/1-7/part5-bg.png") no-repeat;
+      position: relative;
+    }
+    .main .fifth .left p {
+      color: #fff;
+      text-align: center;
+    }
+    .main .fifth .left p:nth-of-type(1) {
+      font-size: 50px;
+      margin-top: 130px;
+    }
+    .main .fifth .left p:nth-of-type(2) {
+      font-size: 160px;
+      line-height: 80%;
+      margin-bottom: 30px;
+    }
+    .main .fifth .left p:nth-of-type(3),.main .fifth .left p:nth-of-type(4) {
+      font-size: 22px;
+      line-height: 150%;
+    }
+    .main .fifth .left img {
+      position: absolute;
+      right: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .main .fifth .right {
+      margin-left: 851px;
+      text-align: center;
+      padding-top: 160px;
+    }
+    .main .fifth .right .title {
+      font-size: 20px;
+      margin: 0 auto 20px;
+    }
+    .main .fifth .right .title span {
+      color: #e74f4d;
+      padding-left: 5px;
+    }
+    .main .fifth .right p {
+      width: 288px;
+      font-size: 12px;
+      line-height: 200%;
+      color: #a2a2a2;
+      text-align: justify;
+      margin: 0 auto;
+    }
+    .main .fifth .right button {
+      font-family: SimHei;
+      width: 107px;
+      height: 35px;
+      font-size: 14px;
+      color: #e74f4d;
+      background: #fff;
+      border: 1px solid #e74f4d;
+      margin: 40px auto;
+    }
+    .main .fifth .right .tag span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 6px;
+      border: 1px solid #a2a2a2;
+      margin: 0 6px;
+    }
+    .main .fifth .right .tag .selected {
+      background: #a2a2a2;
+    }
+    /*sixth*/
+    .main .sixth>div {
+      float: left;
+      width: 33.33%;
+      height: 521px;
+    }
+    .main .sixth .left,.main .sixth .center {
+      text-align: center;
+      padding-top: 160px;
+    }
+    .main .sixth .left {
+      background: #e74f4d;
+    }
+    .main .sixth p {
+      font-size: 21px;
+      line-height: 120%;
+    }
+    .main .sixth .left p {
+      color: #fff;
+    }
+    .main .sixth .center p {
+      color: #323333;
+    }
+    .main .sixth .hr {
+      width: 32px;
+      height: 3px;
+      margin: 20px auto;
+    }
+    .main .sixth .left .hr {
+      background: #fff;
+    }
+    .main .sixth .center .hr {
+      background: #a2a2a2;
+    }
+    .main .sixth button {
+      font-family: SimHei;
+      width: 170px;
+      height: 44px;
+      font-size: 21px;
+      border-width: 1px;
+      border-style: solid;
+    }
+    .main .sixth .left button {
+      color: #fff;
+      background: #e74f4d;
+      border-color: #fff;
+    }
+    .main .sixth .center button {
+      color: #e74f4d;
+      background: #fff;
+      border-color: #e74f4d;
+    }
+    .main .sixth .right {
+      position: relative;
+    }
+    .main .sixth .right img:first-of-type {
+      width: 100%;
+      height: 100%;
+    }
+    .main .sixth .right img:last-of-type {
+      position: absolute;
+      left: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    /*seventh*/
+    .main .seventh {
+      padding: 100px 130px 160px;
+    }
+    .main .seventh .top {
+      text-align: center;
+    }
+    .main .seventh .top .title {
+      font-size: 21px;
+      color: #323333;
+    }
+    .main .seventh .top .hr {
+      width: 32px;
+      height: 3px;
+      margin: 10px auto 15px;
+      background: #e74f4d;
+    }
+    .main .seventh .top .subtitle {
+      font-size: 12px;
+      color: #aaa;
+      line-height: 150%;
+      width: 421px;
+      margin: 0 auto;
+    }
+    .main .seventh .bottom {
+      padding-top: 100px;
+    }
+    .main .seventh .bottom .left {
+      float: left;
+      width: 288px;
+    }
+    .main .seventh .bottom .left .title {
+      font-size: 14px;
+      color: #323333;
+      margin-bottom: 25px;
+    }
+    .main .seventh .bottom .left p {
+      font-size: 12px;
+      color: #aaa;
+      line-height: 150%;
+    }
+    .main .seventh .bottom .left .more {
+      font-size: 5px;
+      color: #aaa;
+      text-align: right;
+      background: url("./../images/1-7/more-icon.png") 90% center no-repeat;
+      margin-top: 30px;
+    }
+    .main .seventh .bottom .right {
+      float: right;
+      width: 639px;
+    }
+    .main .seventh .bottom .right form table {
+      width: 100%;
+      font-size: 12px;
+    }
+    .main .seventh .bottom .right form tr td {
+      padding: 8px 10px;
+    }
+    .main .seventh .bottom .right form tr:first-of-type td {
+      padding-top: 0;
+    }
+    .main .seventh .bottom .right form tr:last-of-type td {
+      padding-bottom: 0;
+    }
+    .main .seventh .bottom .right form input {
+      font-family: SimHei;
+      background: #ededef;
+      height: 41px;
+      width: 100%;
+      line-height: 41px;
+      border-style: none;
+      padding-left: 10px;
+      color: #231815;
+    }
+    .main .seventh .bottom .right form textarea {
+      font-family: SimHei;
+      background: #ededef;
+      height: 121px;
+      width: 100%;
+      border-style: none;
+      padding: 10px;
+      color: #231815;
+      resize: none;
+    }
     /*footer*/
     .footer {
       background: #32353e;
@@ -138,14 +533,14 @@
     }
     .footer .friendlink form input {
       font-family: SimHei;
-      width: 80%;
+      width: 79.9%;
       height: 41px;
       padding: 10px;
       border-style: none;
     }
     .footer .friendlink form label {
       display: inline-block;
-      width: 20%;
+      width: 19.9%;
       background: #717179;
     }
     .footer .friendlink form label a {
@@ -164,7 +559,7 @@
       margin: 30px auto 60px;
       position: absolute;
       left: 50%;
-      margin-left: -100px;
+      transform: translateX(-50%);
     }
     .footer .friendlink ul li {
       float: left;
@@ -224,7 +619,7 @@
       </div>
     </div>
     <div class="main">
-      <div class="first">
+      <div class="first clearfix">
         <div class="one">
           <img src="./../images/1-7/part1-icon-1.png" alt="one">
           <p>打造全新世界观，让你更爱你的生活</p>
@@ -250,58 +645,69 @@
         <div class="title">查找新世界城市活动信息</div>
         <div class="hr"></div>
         <div class="subtitle">每个城市有不同的活动信息，其自主查询您所需要了解的城市</div>
-        <form>
-          <input type="text" name="country" placeholder="中国">
-          <input type="text" name="province" placeholder="省份">
-          <input type="text" name="city" placeholder="城市">
-          <input type="submit" name="search" value="搜索">
-          <ul class="province">
-            <li>北京市</li>
-            <li>天津市</li>
-            <li>河北省</li>
-            <li>陕西省</li>
-            <li>内蒙古自治区</li>
-            <li>辽宁省</li>
-          </ul>
+        <form class="clearfix">
+          <div>
+            <input type="text" name="country" placeholder="中国">
+          </div>
+          <div>
+            <input type="text" name="province" placeholder="省份">
+            <ul class="province">
+              <li class="selected">北京市</li>
+              <li>天津市</li>
+              <li>河北省</li>
+              <li>陕西省</li>
+              <li>内蒙古自治区</li>
+              <li>辽宁省</li>
+            </ul>
+          </div>
+          <div>
+            <input type="text" name="city" placeholder="城市">
+          </div>
+          <div>
+            <input type="submit" name="search" value="搜&nbsp;&nbsp;&nbsp;索">
+          </div>
         </form>
       </div>
-      <div class="fourth">
-        <div class="one">
-          <img src="./../images/1-7/part4-pic1.png" alt="one">
-          <p>北京活动</p>
-          <p>新社区大联盟</p>
-        </div>
-        <div class="two">
-          <p>上海活动</p>
-          <p>夜上海新景观探索</p>
-          <img src="./../images/1-7/part4-pic2.png" alt="two">
-        </div>
-        <div class="three">
-          <img src="./../images/1-7/part4-pic3.png" alt="three">
-          <p>深圳活动</p>
-          <p>全新海岸线观站点</p>
-        </div>
-        <div class="four">
-          <img src="./../images/1-7/part4-pic4.png" alt="four">
-          <p>香港活动</p>
-          <p>奢侈消费大放送</p>
+      <div class="fourth clearfix">
+        <div class="container">
+          <div class="one">
+            <img src="./../images/1-7/part4-pic1.png" alt="one">
+            <p>北京活动</p>
+            <p>新社区大联盟</p>
+          </div>
+          <div class="two">
+            <p>上海活动</p>
+            <p>夜上海新景观探索</p>
+            <img src="./../images/1-7/part4-pic2.png" alt="two">
+          </div>
+          <div class="three">
+            <img src="./../images/1-7/part4-pic3.png" alt="three">
+            <p>深圳活动</p>
+            <p>全新海岸线观站点</p>
+          </div>
+          <div class="four">
+            <img src="./../images/1-7/part4-pic4.png" alt="four">
+            <p>香港活动</p>
+            <p>奢侈消费大放送</p>
+          </div>
         </div>
       </div>
-      <div class="fifth">
+      <div class="fifth clearfix">
         <div class="left">
           <p>新世界</p>
           <p>TIME</p>
           <p>&copy;新世界&nbsp;-&nbsp;北京</p>
           <p>2018.04.01</p>
+          <img src="./../images/1-7/triangle-left.png">
         </div>
         <div class="right">
-          <div class="title">新世界/<span>01</span></div>
+          <div class="title">新世界<i>/</i><span>01</span></div>
           <p>新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界</p>
           <button>更多详情</button>
-          <div class="tag"><span></span><span></span><span></span></div>
+          <div class="tag"><span class="selected"></span><span></span><span></span></div>
         </div>
       </div>
-      <div class="sixth">
+      <div class="sixth clearfix">
         <div class="left">
           <p>新时代</p>
           <p>关于爱生活的我们</p>
@@ -316,24 +722,25 @@
         </div>
         <div class="right">
           <img src="./../images/1-7/part6-bg.png" alt="img">
-          <div class="triangle"></div>
+          <img src="./../images/1-7/triangle-right.png">
         </div>
       </div>
       <div class="seventh">
         <div class="top">
-          <div class="title">成为我们的志愿者</div>
-          <div class="subtitle">新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情 那就不要犹豫，快来加入我们，成为改变所有人生活的人</div>
+          <p class="title">成为我们的志愿者</p>
+          <div class="hr"></div>
+          <p class="subtitle">新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情 那就不要犹豫，快来加入我们，成为改变所有人生活的人</p>
         </div>
-        <div class="bottom">
+        <div class="bottom clearfix">
           <div class="left">
             <div class="one">
               <div class="title">新世界志愿者协议</div>
-              <div class="subtitle">加入新世界志愿者的人员必须遵守中华人民共共和国的 相关法律法规，并且本着平等资源的原则 ......</div>
+              <p class="subtitle">加入新世界志愿者的人员必须遵守中华人民共共和国的 相关法律法规，并且本着平等资源的原则 ......</p>
               <div class="more">more</div>
             </div>
             <div class="two">
               <div class="title">新世界志愿者权利</div>
-              <div class="subtitle">新世界志愿者享受新世界内部所有资源共享的权利，并 且享受所在四新世界活动的优先参与资格</div>
+              <p class="subtitle">新世界志愿者享受新世界内部所有资源共享的权利，并 且享受所在四新世界活动的优先参与资格</p>
               <div class="more">more</div>
             </div>
             <div class="three">
@@ -345,14 +752,14 @@
             <form>
               <table>
                 <tr>
-                  <td><label for="name">姓名：<input type="text" name="name"></label></td>
-                  <td><label for="age">年龄：<input type="text" name="age"></label></td>
+                  <td><input type="text" name="name" value="姓名："></td>
+                  <td><input type="text" name="age" value="年龄："></td>
                 </tr>
                 <tr>
-                  <td><label for="tel">联系方式：<input type="text" name="tel"></label></td>
-                  <td><label for="address">联系地址：<input type="text" name="address"></label></td>
+                  <td><input type="text" name="tel" value="联系方式："></td>
+                  <td><input type="text" name="address" value="联系地址："></td>
                 </tr>
-                <tr><td colspan="2"><textarea cols="50" rows="10">请简单描述您梦想的生活:</textarea></td></tr>
+                <tr><td colspan="2"><textarea>请简单描述您梦想的生活:</textarea></td></tr>
                 <tr><td colspan="2"><input type="submit" name="submitbtn" value="提交申请"></td></tr>
               </table>
             </form>
