@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>响应式网格（栅格化）布局</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    /*栅格布局*/
+    /*container 居中 视情况触发*/
+    .container {
+      border: 1px solid #999;
+      margin: 0 auto;
+      padding:0 15px;
+    }
+    @media screen and (min-width:768px) {
+      .container {
+        width: 750px;
+      }
+    }
+    @media screen and (min-width:992px) {
+      .container {
+        width: 970px;
+      }
+    }
+     @media screen and (min-width:1200px) {
+      .container {
+        width: 1170px;
+      }
+    }
+    /*默认宽度*/
+    .container-fluid {
+      border: 1px solid #999;
+      margin: 0 auto;
+      padding:0 15px;
+    }
+    /*row行*/
+    .row {
+     margin: 0 -15px;
+    }
+    .row::after {
+      content: ".";
+      display: block;
+      clear: both;
+      height: 0;
+      visibility: hidden;
+    }
+    /*column列*/
+    [class*="col-"] {
+      position: relative;
+      min-height: 1px;
+      padding: 0 15px;
+    }
+    @media screen and (max-width:768px) {
+      [class*="col-xs-"] {
+        float: left;
+      }
+      .col-xs-1 {width: 8.33%;}
+      .col-xs-2 {width: 16.66%;}
+      .col-xs-3 {width: 25%;}
+      .col-xs-4 {width: 33.33%;}
+      .col-xs-5 {width: 41.6%;}
+      .col-xs-6 {width: 50%;}
+      .col-xs-7 {width: 58.33%;}
+      .col-xs-8 {width: 66.66%;}
+      .col-xs-9 {width: 75%;}
+      .col-xs-10 {width: 83.33%;}
+      .col-xs-11 {width: 91.66%;}
+      .col-xs-12 {width: 100%;}
+    }
+    @media screen and (min-width:768px) {
+      [class*="col-sm-"] {
+        float: left;
+      }
+      .col-sm-1 {width: 8.33%;}
+      .col-sm-2 {width: 16.66%;}
+      .col-sm-3 {width: 25%;}
+      .col-sm-4 {width: 33.33%;}
+      .col-sm-5 {width: 41.6%;}
+      .col-sm-6 {width: 50%;}
+      .col-sm-7 {width: 58.33%;}
+      .col-sm-8 {width: 66.66%;}
+      .col-sm-9 {width: 75%;}
+      .col-sm-10 {width: 83.33%;}
+      .col-sm-11 {width: 91.66%;}
+      .col-sm-12 {width: 100%;}
+    }
+    @media screen and (min-width:992px) {
+      [class*="col-md-"] {
+        float: left;
+      }
+      .col-md-1 {width: 8.33%;}
+      .col-md-2 {width: 16.66%;}
+      .col-md-3 {width: 25%;}
+      .col-md-4 {width: 33.33%;}
+      .col-md-5 {width: 41.6%;}
+      .col-md-6 {width: 50%;}
+      .col-md-7 {width: 58.33%;}
+      .col-md-8 {width: 66.66%;}
+      .col-md-9 {width: 75%;}
+      .col-md-10 {width: 83.33%;}
+      .col-md-11 {width: 91.66%;}
+      .col-md-12 {width: 100%;}
+    }
+    @media screen and (min-width:1200px) {
+      [class*="col-lg-"] {
+        float: left;
+      }
+      .col-lg-1 {width: 8.33%;}
+      .col-lg-2 {width: 16.66%;}
+      .col-lg-3 {width: 25%;}
+      .col-lg-4 {width: 33.33%;}
+      .col-lg-5 {width: 41.6%;}
+      .col-lg-6 {width: 50%;}
+      .col-lg-7 {width: 58.33%;}
+      .col-lg-8 {width: 66.66%;}
+      .col-lg-9 {width: 75%;}
+      .col-lg-10 {width: 83.33%;}
+      .col-lg-11 {width: 91.66%;}
+      .col-lg-12 {width: 100%;}
+    }
+    /*自定义*/
+    [class*="col-"] {
+      padding: 10px;
+    }
+    [class*="col-"]>div {
+      border: 1px solid #999;
+      background: #eee;
+      height: 50px;
+    }
+    .container {
+      margin: 20px auto;
+      padding: 10px 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-xs-6"><div></div></div>
+      <div class="col-sm-4 col-xs-6"><div></div></div>
+      <div class="col-sm-4 col-xs-12"><div></div></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 col-xs-3"><div></div></div>
+      <div class="col-sm-6 col-xs-6"><div></div></div>
+      <div class="col-sm-3 col-xs-3"><div></div></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1 col-xs-2"><div></div></div>
+      <div class="col-sm-1 col-xs-2"><div></div></div>
+      <div class="col-sm-2 col-xs-8"><div></div></div>
+      <div class="col-sm-2 col-xs-3"><div></div></div>
+      <div class="col-sm-6 col-xs-3"><div></div></div>
+    </div>
+  </div>
+</body>
+</html>
