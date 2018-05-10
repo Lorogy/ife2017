@@ -6,6 +6,7 @@
   <title>HTML/CSS实现一个复杂页面</title>
   <link rel="stylesheet" type="text/css" href="./../css/normalize.css">
   <style type="text/css">
+    /*common*/
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,6 +16,12 @@
     a {
       text-decoration: none;
     }
+    ul {
+      list-style: none;
+    }
+    input,button {
+      border-style: none;
+    }
     .clearfix::before,.clearfix::after {
       content: ".";
       display: block;
@@ -23,48 +30,199 @@
     }
     .clearfix:after {clear: both;}
     .clearfix {zoom: 1;}
+    body {
+      min-width: 1280px;
+      background: #ededed;
+    }
+    .header .nav {
+      height: 56px;
+      background: #2189C0;
+    }
+    .header .nav .left {
+      float: left;
+      margin-top: 10px;
+      margin-left: 50px;
+    }
+    .header .nav .right {
+      float: right;
+      margin-right: 94px;
+    }
+    .header .nav .right input {
+      width: 313px;
+      height: 28px;
+      margin: 14px 0;
+      border-radius: 14px;
+      background: #fff url("./../images/1-9/search-icon.png") 14px center no-repeat;
+    }
+    .header .nav .right button {
+      width: 48px;
+      height: 16px;
+      line-height: 16px;
+      font-size: 12px;
+      color: #fff;
+      background-color: transparent;
+      background-image: url("./../images/1-9/login-icon.png");
+      background-repeat: no-repeat;
+      background-position: left center;
+      padding-left: 15px;
+      transform: translateY(-3px);
+    }
+    .main>.sidebar {
+      float: left;
+      width: 260px;
+      height: 1213px;
+      background-color: #2B2E3D;
+      padding-top: 18px;
+      padding-left: 45px;
+      color: #6E8095;
+      font-size: 12px;
+    }
+    .main>.sidebar>.part1>div {
+      float: left;
+    }
+    .main>.sidebar>.part1 .circle {
+      width: 57px;
+      height: 57px;
+      border-radius: 28px;
+      border: #B9BABE 2px solid;
+      position: relative;
+    }
+    .main>.sidebar>.part1 .circle>div {
+      width: 47px;
+      height: 47px;
+      border-radius: 25px;
+      background: #B9BABE;
+      position: absolute;
+      left: 3px;
+      top: 3px;
+    }
+    .main>.sidebar>.part1 .username {
+      height: 57px;
+      line-height: 57px;
+      color: #fff;
+      margin-left: 15px;
+    }
+    .main>.sidebar>.part2 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 20px;
+    }
+    .main>.sidebar>.part2>div {
+      float: left;
+      text-align: center;
+    }
+    .main>.sidebar>.part2 .hr {
+      height: 24px;
+      width: 1px;
+      background: #6E8095;
+      margin: 0 30px;
+    }
+    .main>.sidebar>.part3>.dropdown {
+      margin: 20px 0;
+    }
+    .main>.sidebar>.part3>.dropdown div {
+      margin: 10px 0;
+    }
+    .main>.sidebar>.part3>.dropdown .select {
+      color: #fff;
+    }
+    .main>.sidebar>.part3>.dropdown .dropbtn,.main>.sidebar>.part3>.dropdown .dropitem {
+      padding-left: 22px;
+      line-height: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    .main>.sidebar>.part3>.dropdown:nth-of-type(1)>.dropbtn {
+      background: url("./../images/1-9/个人报表-icon.png") left center no-repeat;
+    }
+    .main>.sidebar>.part3>.dropdown:nth-of-type(2)>.dropbtn {
+      background: url("./../images/1-9/个人收藏.png") left center no-repeat;
+    }
+    .main>.sidebar>.part3>.dropdown:nth-of-type(3)>.dropbtn {
+      background: url("./../images/1-9/我的分享.png") left center no-repeat;
+    }
+    .main>.sidebar>.part3>.dropdown:nth-of-type(4)>.dropbtn {
+      background: url("./../images/1-9/个人收藏.png") left center no-repeat;
+    }
+    .main>.sidebar>.part3>.dropdown:nth-of-type(5)>.dropbtn {
+      background: url("./../images/1-9/个人收藏.png") left center no-repeat;
+    }
+    .main>.sidebar>.part3>.dropdown:nth-of-type(6)>.dropbtn {
+      background: url("./../images/1-9/账户信息.png") left center no-repeat;
+    }
+    .main>.sidebar>.part3 .dropdown .dropmenu {
+      padding-left: 30px;
+      display: none;
+    }
+    .main>.sidebar>.part3 .dropdown[class*="select"] .dropmenu {
+      display: block;
+    }
+    .main>.sidebar>.part3>.dropdown>.dropmenu>.dropdown {
+      background: url("./../images/1-9/triangle-right.png") left top no-repeat;
+      padding-left: 20px;
+    }
+    .main>.sidebar>.part3>.dropdown>.dropmenu>.dropdown[class*="select"] {
+      background: url("./../images/1-9/triangle-buttom.png") left 3px no-repeat;
+    }
+    .main>.sidebar>.part3>.dropdown>.dropmenu>.dropdown>.dropbtn {
+      background: url("./../images/1-9/文件夹 -icon-1.png") left center no-repeat;
+    }
+    .main>.sidebar>.part3>.dropdown>.dropmenu>.dropdown[class*="select"]>.dropbtn {
+      background: url("./../images/1-9/文件夹 -icon.png") left center no-repeat;
+    }
+    .main>.sidebar>.part3>.dropdown>.dropmenu>.dropdown .dropitem {
+      background: url("./../images/1-9/文档-icon-1.png") left center no-repeat;
+      margin-left: -10px;
+    }
+    .main>.sidebar>.part3>.dropdown>.dropmenu>.dropdown[class*="select"] .dropitem[class*="select"] {
+      background: url("./../images/1-9/文档-icon.png") left center no-repeat;
+    }
+    .main>.mainbody {
+      margin-left: 260px;
+    }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <div class="header">
-      <div class="nav">
+      <div class="nav clearfix">
         <div class="left">
-          <img src="">
+          <img src="./../images/1-9/logo-icon.png">
         </div>
         <div class="right">
           <input type="text" name="search">
-          <div class="login">登录</div>
+          <button class="login">登录</button>
         </div>
       </div>
     </div>
-    <div class="main">
+    <div class="main clearfix">
       <div class="sidebar">
-        <div class="part1">
-          <span class="circle"></span>
-          <span class="username">ABC123</span>
+        <div class="part1 clearfix">
+          <div class="circle"><div></div></div>
+          <div class="username">ABC123</div>
         </div>
-        <div class="part2">
+        <div class="part2 clearfix">
           <div class="left">
             <div class="num">110</div>
             <div class="collect">收藏</div>
           </div>
+          <div class="hr"></div>
           <div class="right">
             <div class="num">313</div>
             <div class="fans">粉丝</div>
           </div>
         </div>
-        <div class="patt3">
-          <div class="first dropdown">
-            <div class="dropbtn">个人报表</div>
+        <div class="part3">
+          <div class="first dropdown select">
+            <div class="dropbtn select">个人报表</div>
             <div class="dropmenu">
               <div class="dropdown">
                 <div class="dropbtn">文件一</div>
               </div>
-              <div class="dropdown">
+              <div class="dropdown select">
                 <div class="dropbtn">文件二</div>
                 <div class="dropmenu">
-                  <div class="dropitem">文档一</div>
+                  <div class="dropitem select">文档一</div>
                   <div class="dropitem">文档二</div>
                 </div>
               </div>
