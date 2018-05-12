@@ -11,7 +11,8 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: SimHei;
+      font-family: MicrosoftYaHei;
+      font-size: 12px;
     }
     a {
       text-decoration: none;
@@ -58,7 +59,6 @@
       width: 48px;
       height: 16px;
       line-height: 16px;
-      font-size: 12px;
       color: #fff;
       background-color: transparent;
       background-image: url("./../images/1-9/login-icon.png");
@@ -75,7 +75,6 @@
       padding-top: 18px;
       padding-left: 45px;
       color: #6E8095;
-      font-size: 12px;
     }
     .main>.sidebar>.part1>div {
       float: left;
@@ -162,7 +161,7 @@
       padding-left: 20px;
     }
     .main>.sidebar>.part3>.dropdown>.dropmenu>.dropdown[class*="select"] {
-      background: url("./../images/1-9/triangle-buttom.png") left 3px no-repeat;
+      background: url("./../images/1-9/triangle-bottom.png") left 3px no-repeat;
     }
     .main>.sidebar>.part3>.dropdown>.dropmenu>.dropdown>.dropbtn {
       background: url("./../images/1-9/文件夹 -icon-1.png") left center no-repeat;
@@ -179,6 +178,463 @@
     }
     .main>.mainbody {
       margin-left: 260px;
+    }
+    .main>.mainbody>.navbar {
+      height: 31px;
+      position: relative;
+      background: #fff;
+    }
+    .main>.mainbody>.navbar>ul {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-left: 30px;
+    }
+    .main>.mainbody>.navbar>ul>li {
+      float: left;
+      color: #aaa;
+    }
+    .main>.mainbody>.navbar>ul>li:nth-of-type(even) {
+      margin: 0 5px;
+    }
+    .main>.mainbody>.navbar>ul>li>a {
+      display: inline-block;
+      color: #aaa;
+    }
+    .main>.mainbody>.navbar>ul>li[class*="select"]>a {
+      color: #6898c2;
+    }
+    .main>.mainbody>.container {
+      width: 891px;
+      margin: 0 auto;
+    }
+    .main>.mainbody>.container>.part1 {
+      background: #fff;
+      height: 86px;
+      border: 1px solid #dddee2;
+      margin-top: 20px;
+      position: relative;
+      color: #aaa;
+    }
+    .main>.mainbody>.container>.part1 form {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .main>.mainbody>.container>.part1 form>div {
+      float: left;
+      margin-left: 30px;
+    }
+    .main>.mainbody>.container>.part1 form select{
+      display: inline-block;
+      height: 26px;
+      margin-left: 10px;
+      padding-left: 5px;
+      border: 1px solid #c2c2c2;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: url(./../images/1-9/1-icon.png) 95% center no-repeat;
+      padding-right: 15px;
+    }
+    .main>.mainbody>.container>.part1 form select::-ms-expand { display: none; }
+    .main>.mainbody>.container>.part1 form select[name="query"] {
+      width: 71px;
+    }
+    .main>.mainbody>.container>.part1 form select[name="buyer"] {
+      width: 121px;
+      margin-bottom: 5px;
+    }
+    .main>.mainbody>.container>.part1 form select[name="seller"] {
+      width: 121px;
+    }
+    .main>.mainbody>.container>.part1 form select[name="date"] {
+      width: 121px;
+      margin-bottom: 5px;
+      background-image: none;
+    }
+    .main>.mainbody>.container>.part1 form select[name="time"] {
+      width: 71px;
+      margin-bottom: 5px;
+    }
+    .main>.mainbody>.container>.part1 form select[name="peoplenum"] {
+      width: 71px;
+    }
+    .main>.mainbody>.container>.part1 form select[name="deal"] {
+      width: 121px;
+    }
+    .main>.mainbody>.container>.part1 form button {
+      width: 51px;
+      height: 26px;
+      color: #fff;
+      background: #398AC1;
+      margin-top: 15.5px;
+    }
+    .main>.mainbody>.container>.part1 form .change {
+      position: absolute;
+      top: 50%;
+      margin-left: 161px;
+      transform: translateY(-50%);
+    }
+    .main>.mainbody>.container>.part2 {
+      height: 65px;
+      margin-top: 10px;
+      color: #323333;
+    }
+    .main>.mainbody>.container>.part2>div {
+      float: left;
+      background: #fff;
+      border-left: 1px solid #CBCCD0;
+      border-top: 1px solid #CBCCD0;
+      height: 65px;
+      height: 65px;
+      margin-right: 5px;
+    }
+    .main>.mainbody>.container>.part2 .shiftleft {
+      width: 30px;
+      background: #fff url("./../images/1-9/shift-left-icon.png") center center no-repeat;
+    }
+    .main>.mainbody>.container>.part2 .shiftright {
+      width: 30px;
+      background: #fff url("./../images/1-9/shift-right-icon.png") center center no-repeat;
+    }
+    .main>.mainbody>.container>.part2 .item {
+      width: 110px;
+      text-align: center;
+    }
+    .main>.mainbody>.container>.part2 .item[class*=select] {
+      border-top: 4px solid #398AC1;
+    }
+    .main>.mainbody>.container>.part2 .item .top {
+      margin-bottom: 5px;
+      margin-top: 10px;
+    }
+    .main>.mainbody>.container>.part2 .item .bottom {
+      font-size: 21px;
+      color: #ec6500;
+      padding-left: 10px;
+      background: url("./../images/1-9/money-icon.png") 30% no-repeat;
+    }
+    .main>.mainbody>.container>.part2 .history {
+      width: 130px;
+      margin-right: 0;
+      background: #fff url("./../images/1-9/历史查询-icon.png") 20px center no-repeat;
+      font-size: 13px;
+      text-align: right;
+      padding-right: 20px;
+      padding-top: 26px;
+    }
+    .main>.mainbody>.container>.part3 {
+      height: 115px;
+    }
+    .main>.mainbody>.container>.part3 h3 {
+      font-size: 13px;
+      color: #323333;
+      margin-top: 25px;
+      margin-bottom: 5px;
+    }
+    .main>.mainbody>.container>.part3 .item {
+      float: left;
+      width: 201px;
+      height: 71px;
+      background: #fff;
+      border-bottom: 1px solid #D3D4D8;
+      border-right: 1px solid #D3D4D8;
+      border-top: 1px solid #D3D4D8;
+      border-left-width: 4px;
+      border-left-style: solid;
+      padding-left: 10px;
+      padding-right: 15px;
+      padding-top: 10px;
+      margin-right: 28px;
+    }
+    .main>.mainbody>.container>.part3 .item:nth-of-type(1) {
+      border-left-color: #43B29F;
+    }
+    .main>.mainbody>.container>.part3 .item:nth-of-type(2) {
+      border-left-color: #398BC3;
+    }
+    .main>.mainbody>.container>.part3 .item:nth-of-type(3) {
+      border-left-color: #CF4B36;
+    }
+    .main>.mainbody>.container>.part3 .item:nth-of-type(4) {
+      margin-right: 0;
+      border-left-color: #E1CD46;
+    }
+    .main>.mainbody>.container>.part3 .item>.left {
+      float: left;
+    }
+    .main>.mainbody>.container>.part3 .item>.left span {
+      display: block;
+    }
+    .main>.mainbody>.container>.part3 .item>.left span:first-of-type {
+      color: #323333;
+      margin-bottom: 10px;
+      margin-top: 8px;
+    }
+    .main>.mainbody>.container>.part3 .item>.left span:last-of-type {
+      color: #aaa;
+    }
+    .main>.mainbody>.container>.part3 .item>.right {
+      float: right;
+      width: 61px;
+      height: 47px;
+    }
+    .main>.mainbody>.container>.part3 .item:nth-of-type(1)>.right {
+      background: #43B29F;
+    }
+    .main>.mainbody>.container>.part3 .item:nth-of-type(2)>.right {
+      background: #398BC3;
+    }
+    .main>.mainbody>.container>.part3 .item:nth-of-type(3)>.right {
+      background: #CF4B36;
+    }
+    .main>.mainbody>.container>.part3 .item:nth-of-type(4)>.right {
+      margin-right: 0;
+      background: #E1CD46;
+    }
+    .main>.mainbody>.container>.part4,.main>.mainbody>.container>.part5 {
+      height: 357px;
+      margin-top: 10px;
+    }
+    .main>.mainbody>.container>.part4>div,.main>.mainbody>.container>.part5>div {
+      height: 357px;
+      background: #fff;
+      border: 1px solid #D1D2D7;
+      border-radius: 10px;
+    }
+    .main>.mainbody>.container>.part4 h3,.main>.mainbody>.container>.part5 h3 {
+      height: 41px;
+      background: #F4F5F7;
+      line-height: 41px;
+      color: #aaa;
+      padding-left: 20px;
+    }
+    .main>.mainbody>.container>.part4>.left {
+      float: left;
+      width: 531px;
+    }
+    .main>.mainbody>.container>.part4>.left>div {
+      padding-top: 10px;
+      padding-left: 20px;
+      color: #535353;
+    }
+    .main>.mainbody>.container>.part4>.left ul {
+      position: relative;
+    }
+    .main>.mainbody>.container>.part4>.left ul li {
+      float: left;
+      width: 83px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      margin-right: 5px;
+      background-color: #EDECF1;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .main>.mainbody>.container>.part4>.left ul li[class*="select"] {
+      background: #fff;
+      border: 1px solid #D1D2D7;
+      border-bottom-width: 0px;
+    }
+    .main>.mainbody>.container>.part4>.left .white {
+      position: absolute;
+      width: 81px;
+      height: 3px;
+      background: #fff;
+      top: 26px;
+      left: 1px;
+    }
+    .main>.mainbody>.container>.part4>.left #project1 {
+      width: 491px;
+      padding-top: 25px;
+      padding-left: 25px;
+      padding-bottom: 25px;
+      padding-right: 60px;
+      border: 1px solid #D1D2D7;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    .main>.mainbody>.container>.part4>.left table tr td {
+      width: 101px;
+      height: 31px;
+      text-align: center;
+      vertical-align: center;
+      border: 1px solid #E6E6E8;
+    }
+    .main>.mainbody>.container>.part4>.left table tr td[class*="select"] {
+      background: #F4F5F7;
+    }
+    .main>.mainbody>.container>.part4>.right {
+      float: right;
+      width: 351px;
+    }
+    .main>.mainbody>.container>.part4>.right>div {
+      width: 281px;
+      margin: 20px auto 0;
+    }
+    .main>.mainbody>.container>.part4>.right>div h4 {
+      color: #c3c2c2;
+      margin-bottom: 5px;
+    }
+    .main>.mainbody>.container>.part4>.right>div h5 {
+      color: #535353;
+      margin-bottom: 5px;
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(1) {
+     height: 45px;
+     border-top: 1px solid #E6E6E8;
+     border-bottom: 1px solid #E6E6E8;
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(1) td:first-of-type {
+      width: 96px;
+      border-right: 1px solid #E6E6E8;
+      padding-left: 10px;
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(1) td:last-of-type {
+      width: 185px;
+      padding-left: 10px;
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(1) td span {
+      display: block;
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(1) td span:first-of-type {
+      color: #c3c2c2;
+      margin-bottom: 5px;
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(1) td span:last-of-type {
+      color: #535353;
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(2) p {
+      width: 100%;
+      height: 150px;
+      line-height: 150%;
+      color: #535353;
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(2) p:first-line {
+      color: #c3c2c2;
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(3) {
+      border-top: 1px solid #E6E6E8;
+      height: 31px;
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(3) input[name="agreement"] {
+      transform: translateY(3px);
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(3) label {
+      color: #c3c2c2;
+      padding-left: 5px;
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(3) td:last-of-type {
+      text-align: right;
+      transform: translateY(3px);
+    }
+    .main>.mainbody>.container>.part4>.right>div table tr:nth-of-type(3) input[name="search"] {
+      width: 51px;
+      height: 26px;
+      color: #fff;
+      background: #398BC3;
+    }
+    .main>.mainbody>.container>.part5 {
+      color: #494949;
+    }
+    .main>.mainbody>.container>.part5>.left {
+      float: left;
+      width: 351px;
+    }
+    .main>.mainbody>.container>.part5>.left>div {
+      width: 311px;
+      margin: 10px auto 0px;
+    }
+    .main>.mainbody>.container>.part5>.left ul {
+      margin-bottom: 10px;
+    }
+    .main>.mainbody>.container>.part5>.left ul li {
+      float: left;
+      margin-right: 5px;
+    }
+    .main>.mainbody>.container>.part5>.left ul li:last-of-type {
+      margin-right: 0px;
+    }
+    .main>.mainbody>.container>.part5>.left ul li select {
+      height: 21px;
+      color: #494949;
+    }
+    .main>.mainbody>.container>.part5>.left ul li:nth-of-type(1) select {
+      width: 63px;
+    }
+    .main>.mainbody>.container>.part5>.left ul li:nth-of-type(2) select {
+      width: 81px;
+      padding-left: 20px;
+    }
+    .main>.mainbody>.container>.part5>.left ul li:nth-of-type(3) select {
+      width: 81px;
+      padding-left: 5px;
+    }
+    .main>.mainbody>.container>.part5>.left ul li:nth-of-type(4) input {
+      height: 21px;
+      width: 71px;
+      background: #fff;
+      border: 1px solid #aaa;
+      color: #494949;
+    }
+    .main>.mainbody>.container>.part5>.left table {
+      width: 100%;
+      text-align: center;
+      border-collapse: separate;
+    }
+    .main>.mainbody>.container>.part5>.left table thead tr{
+      height: 32px;
+      border-top: 1px solid #398BC3;
+      border-bottom: 1px solid #E6E6E8;
+    }
+    .main>.mainbody>.container>.part5>.left table tbody td {
+      width: 41px;
+      height: 41px;
+    }
+    .main>.mainbody>.container>.part5>.left table tbody td[class*="select"] {
+      border: 1px solid #F6C938;
+    }
+    .main>.mainbody>.container>.part5>.left table tbody td span {
+      display: block;
+    }
+    .main>.mainbody>.container>.part5>.left table tbody td span[class*="select"] {
+      color: #CF4B36;
+    }
+    .main>.mainbody>.container>.part5>.right {
+      float: right;
+      width: 531px;
+    }
+    .main>.mainbody>.container>.part5>.right table {
+      width: 451px;
+      margin: 10px auto;
+      text-align: center;
+    }
+    .main>.mainbody>.container>.part5>.right table td {
+      border: 1px solid #CBCBCB;
+      border-bottom-width: 0px;
+      height:26px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    .main>.mainbody>.container>.part5>.right table thead {
+      color: #535353;
+    }
+    .main>.mainbody>.container>.part5>.right table tbody tr:first-of-type {
+      background: #F4F5F7;
+    }
+    .main>.mainbody>.container>.part5>.right table tr>td:nth-of-type(3) {
+      text-align: left;
+      padding-right: 15px;
+    }
+    .main>.mainbody>.container>.part5>.right table tr>td:nth-of-type(3) span {
+      display: inline-block;
+      width: 143px;
+      height: 4px;
+      background: #DCDCDC;
+      margin-left: 20px;
     }
   </style>
 </head>
@@ -250,19 +706,19 @@
       </div>
       <div class="mainbody">
         <div class="navbar">
-          <ul>
+          <ul class="clearfix">
             <li><a href="#">C站</a></li>
             <li>/</li>
             <li><a href="#">个人报表</a></li>
             <li>/</li>
             <li><a href="#">文件二</a></li>
             <li>/</li>
-            <li><a href="#">文档一</a></li>
+            <li class="select"><a href="#">文档一</a></li>
           </ul>
         </div>
         <div class="container">
           <div class="part1">
-            <form>
+            <form class="clearfix">
               <div>
                 <div class="item">
                   <label>查询项</label>
@@ -284,6 +740,7 @@
                     <option value="c">小C</option>
                   </select>
                 </div>
+                <img class="change" src="./../images/1-9/change.png">
               </div>
               <div>
                 <div class="item">
@@ -312,99 +769,97 @@
               </div>
             </form>
           </div>
-          <div class="part2">
-            <div class="shift"></div>
-            <div class="item">
-              <div class="top">10:00am</div>
-              <div class="bottom">￥1200</div>
+          <div class="part2 clearfix">
+            <div class="shiftleft"></div>
+            <div class="item select">
+              <div class="top">10:00&nbsp;am</div>
+              <div class="bottom">1200</div>
             </div>
             <div class="item">
-              <div class="top">11:00am</div>
-              <div class="bottom">￥1300</div>
+              <div class="top">11:00&nbsp;am</div>
+              <div class="bottom">1300</div>
             </div>
             <div class="item">
-              <div class="top">12:00am</div>
-              <div class="bottom">￥1200</div>
+              <div class="top">12:00&nbsp;am</div>
+              <div class="bottom">1200</div>
             </div>
             <div class="item">
-              <div class="top">01:00pm</div>
-              <div class="bottom">￥1400</div>
+              <div class="top">01:00&nbsp;pm</div>
+              <div class="bottom">1400</div>
             </div>
             <div class="item">
-              <div class="top">02:00pm</div>
-              <div class="bottom">￥1500</div>
+              <div class="top">02:00&nbsp;pm</div>
+              <div class="bottom">1500</div>
             </div>
             <div class="item">
-              <div class="top">03:00pm</div>
-              <div class="bottom">￥1800</div>
+              <div class="top">03:00&nbsp;pm</div>
+              <div class="bottom">1800</div>
             </div>
-            <div class="shift"></div>
+            <div class="shiftright"></div>
             <div class="history">历史查询</div>
           </div>
-          <div class="part3">
+          <div class="part3 clearfix">
             <h3>2016年4月份统计</h3>
-            <div class="item">
-              <div class="left">133311<br>成交量</div>
+            <div class="item clearfix">
+              <div class="left"><span>133311</span><span>成交量</span></div>
               <div class="right"></div>
             </div>
-            <div class="item">
-              <div class="left">133311<br>成交量</div>
+            <div class="item clearfix">
+              <div class="left"><span>133311</span><span>成交量</span></div>
               <div class="right"></div>
             </div>
-            <div class="item">
-              <div class="left">133311<br>成交量</div>
+            <div class="item clearfix">
+              <div class="left"><span>133311</span><span>成交量</span></div>
               <div class="right"></div>
             </div>
-            <div class="item">
-              <div class="left">133311<br>成交量</div>
+            <div class="item clearfix">
+              <div class="left"><span>133311</span><span>成交量</span></div>
               <div class="right"></div>
             </div>
           </div>
-          <div class="part4">
+          <div class="part4 clearfix">
             <div class="left">
               <h3>第一组项目</h3>
               <div>
-                <ul class="tab">
+                <ul class="tab clearfix">
+                  <li class="select">项目一</li>
                   <li>项目一</li>
                   <li>项目一</li>
                   <li>项目一</li>
                   <li>项目一</li>
-                  <li>项目一</li>
+                  <div class="white"></div>
                 </ul>
-                <table id="project1">
-                  <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                  <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                  <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                  <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                  <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                  <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                </table>
+                <div id="project1">
+                  <table>
+                    <tr><td class="select">购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                    <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                    <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                    <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                    <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                    <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                  </table>
+                </div>
               </div>
             </div>
             <div class="right">
               <h3>第一组项目</h3>
               <div>
                 <h4>标题</h4>
+                <h5>项目报表三</h5>
                 <table>
-                  <caption>项目报表三</caption>
-                  <thead>
-                    <tr><td>价格</td><td>负责人</td></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>￥158</td><td>小A</td></tr>
-                    <tr><td><textarea>项目描述<br>该项目目前负责人是......</textarea></td></tr>
-                    <tr><td><input type="checkbox" name="agreement" value="no"><label>遵守保密协议</label></td><td><input type="submit" name="search" value="搜索"></td></tr>
-                  </tbody>
+                  <tr><td><span>价格</span><span>￥158</span></td><td><span>负责人</span><span>小A</span></td></tr>
+                  <tr><td colspan="2"><p>项目描述<br>该项目目前负责人是......</p></td></tr>
+                  <tr><td><input type="checkbox" name="agreement" value="no"><label>遵守保密协议</label></td><td><input type="submit" name="search" value="搜索"></td></tr>
                 </table>
               </div>
             </div>
           </div>
-          <div class="part5">
+          <div class="part5 clearfix">
             <div class="left">
               <h3>日历</h3>
               <div>
                 <form>
-                  <ul>
+                  <ul class="clearfix">
                     <li><select><option>2016年</option></select></li>
                     <li><select><option>4月</option></select></li>
                     <li><select><option>标注日期</option></select></li>
@@ -419,19 +874,19 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td></td><td></td><td></td><td></td><td><span>1</span><span>愚人节</span></td><td><span>2</span><span>廿五</span></td><td><span>3</span><span>廿六</span></td>
+                      <td></td><td></td><td></td><td></td><td><span>1</span><span class="select">愚人节</span></td><td><span class="select">2</span><span>廿五</span></td><td><span class="select">3</span><span>廿六</span></td>
                     </tr>
                     <tr>
-                      <td><span>4</span><span>廿七</span></td><td><span>5</span><span>清明</span></td><td><span>6</span><span>廿九</span></td><td><span>7</span><span>三月</span></td><td><span>8</span><span>初二</span></td><td><span>9</span><span>初三</span></td><td><span>10</span><span>初四</span></td>
+                      <td><span>4</span><span>廿七</span></td><td><span>5</span><span class="select">清明</span></td><td><span>6</span><span>廿九</span></td><td><span>7</span><span>三月</span></td><td><span>8</span><span>初二</span></td><td class="select"><span class="select">9</span><span>初三</span></td><td><span class="select">10</span><span>初四</span></td>
                     </tr>
                     <tr>
-                      <td><span>11</span><span>初五</span></td><td><span>12</span><span>初六</span></td><td><span>13</span><span>初七</span></td><td><span>14</span><span>初八</span></td><td><span>15</span><span>初九</span></td><td><span>16</span><span>初十</span></td><td><span>17</span><span>十一</span></td>
+                      <td><span>11</span><span>初五</span></td><td class="select"><span>12</span><span>初六</span></td><td><span>13</span><span>初七</span></td><td><span>14</span><span>初八</span></td><td><span>15</span><span>初九</span></td><td><span class="select">16</span><span>初十</span></td><td><span class="select">17</span><span>十一</span></td>
                     </tr>
                     <tr>
-                      <td><span>18</span><span>十二</span></td><td><span>19</span><span>十三</span></td><td><span>20</span><span>十四</span></td><td><span>21</span><span>十五</span></td><td><span>22</span><span>十六</span></td><td><span>23</span><span>十七</span></td><td><span>24</span><span>十八</span></td>
+                      <td><span>18</span><span>十二</span></td><td class="select"><span>19</span><span>十三</span></td><td><span>20</span><span>十四</span></td><td><span>21</span><span>十五</span></td><td><span>22</span><span>十六</span></td><td><span class="select">23</span><span>十七</span></td><td><span class="select">24</span><span>十八</span></td>
                     </tr>
                     <tr>
-                      <td><span>25</span><span>十九</span></td><td><span>26</span><span>廿十</span></td><td><span>27</span><span>廿一</span></td><td><span>28</span><span>廿二</span></td><td><span>29</span><span>廿三</span></td><td><span>30</span><span>廿四</span></td><td></td>
+                      <td><span>25</span><span>十九</span></td><td><span>26</span><span>廿十</span></td><td><span>27</span><span>廿一</span></td><td><span>28</span><span>廿二</span></td><td><span>29</span><span>廿三</span></td><td><span class="select">30</span><span>廿四</span></td><td></td>
                     </tr>
                   </tbody>
                 </table>
