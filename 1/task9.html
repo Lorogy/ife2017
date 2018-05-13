@@ -420,7 +420,6 @@
       color: #535353;
     }
     .main>.mainbody>.container>.part4>.left ul {
-      position: relative;
     }
     .main>.mainbody>.container>.part4>.left ul li {
       float: left;
@@ -432,27 +431,37 @@
       background-color: #EDECF1;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
+      position: relative;
+    }
+    .main>.mainbody>.container>.part4>.left ul li a{
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      color: #535353;
     }
     .main>.mainbody>.container>.part4>.left ul li[class*="select"] {
-      background: #fff;
+      background-color: #fff;
       border: 1px solid #D1D2D7;
       border-bottom-width: 0px;
     }
-    .main>.mainbody>.container>.part4>.left .white {
+    .main>.mainbody>.container>.part4>.left ul li[class*="select"] .white {
       position: absolute;
       width: 81px;
       height: 3px;
       background: #fff;
-      top: 26px;
+      top: 25px;
       left: 1px;
     }
-    .main>.mainbody>.container>.part4>.left #project1 {
+    .main>.mainbody>.container>.part4>.left .tab-content {
       width: 491px;
-      padding-top: 25px;
+      height: 239px;
       padding-left: 25px;
-      padding-bottom: 25px;
-      padding-right: 60px;
+      padding-top: 25px;
       border: 1px solid #D1D2D7;
+      overflow: hidden;
+    }
+    .main>.mainbody>.container>.part4>.left .tab-content>div {
+      height: 239px;
     }
     table {
       border-collapse: collapse;
@@ -629,12 +638,30 @@
       text-align: left;
       padding-right: 15px;
     }
-    .main>.mainbody>.container>.part5>.right table tr>td:nth-of-type(3) span {
+    .main>.mainbody>.container>.part5>.right table tr>td:nth-of-type(3) .process-wrapper {
       display: inline-block;
       width: 143px;
       height: 4px;
       background: #DCDCDC;
       margin-left: 20px;
+      position: relative;
+    }
+    .main>.mainbody>.container>.part5>.right table tr>td:nth-of-type(3) .process-wrapper .process-container {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 4px;
+      background: #398BC3;
+    }
+    .main>.mainbody>.container>.part5>.right table tr:nth-of-type(1)>td:nth-of-type(3) .process-container {
+      background: #ED6D52;
+    }
+    .main>.mainbody>.container>.part5>.right table tr:nth-of-type(2)>td:nth-of-type(3) .process-container {
+      background: #EF8150;
+    }
+    .main>.mainbody>.container>.part5>.right table tr:nth-of-type(3)>td:nth-of-type(3) .process-container {
+      background: #F19E4E;
     }
   </style>
 </head>
@@ -822,22 +849,27 @@
               <h3>第一组项目</h3>
               <div>
                 <ul class="tab clearfix">
-                  <li class="select">项目一</li>
-                  <li>项目一</li>
-                  <li>项目一</li>
-                  <li>项目一</li>
-                  <li>项目一</li>
-                  <div class="white"></div>
+                  <li class="select"><a href="#project1">项目一</a><div class="white"></div></li>
+                  <li><a href="#project2">项目二</a><div class="white"></div></li>
+                  <li><a href="#project3">项目三</a><div class="white"></div></li>
+                  <li><a href="#project4">项目四</a><div class="white"></div></li>
+                  <li><a href="#project5">项目五</a><div class="white"></div></li>
                 </ul>
-                <div id="project1">
-                  <table>
-                    <tr><td class="select">购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                    <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                    <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                    <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                    <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                    <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
-                  </table>
+                <div class="tab-content">
+                  <div id="project1">
+                    <table>
+                      <tr><td class="select">购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                      <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                      <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                      <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                      <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                      <tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+                    </table>
+                  </div>
+                  <div id="project2"></div>
+                  <div id="project3"></div>
+                  <div id="project4"></div>
+                  <div id="project5"></div>
                 </div>
               </div>
             </div>
@@ -900,16 +932,16 @@
                     <tr><td>排名</td><td>品牌</td><td>搜索指数</td></tr>
                   </thead>
                   <tbody>
-                    <tr><td>1</td><td>大众</td><td>48912001<span></span></td></tr>
-                    <tr><td>2</td><td>丰田</td><td>29307333<span></span></td></tr>
-                    <tr><td>3</td><td>奥迪</td><td>23139070<span></span></td></tr>
-                    <tr><td>4</td><td>本田</td><td>22885564<span></span></td></tr>
-                    <tr><td>5</td><td>福特</td><td>22314792<span></span></td></tr>
-                    <tr><td>6</td><td>宝马</td><td>21444077<span></span></td></tr>
-                    <tr><td>7</td><td>现代</td><td>20114969<span></span></td></tr>
-                    <tr><td>8</td><td>起亚</td><td>19251680<span></span></td></tr>
-                    <tr><td>9</td><td>奔驰</td><td>19172837<span></span></td></tr>
-                    <tr><td>10</td><td>别克</td><td>18544027<span></span></td></tr>
+                    <tr><td>1</td><td>大众</td><td class="process">48912001<span class="process-wrapper"><span class="process-container"></span></span></td></tr>
+                    <tr><td>2</td><td>丰田</td><td class="process">29307333<span class="process-wrapper"><span class="process-container"></span></span></td></tr>
+                    <tr><td>3</td><td>奥迪</td><td class="process">23139070<span class="process-wrapper"><span class="process-container"></span></span></td></tr>
+                    <tr><td>4</td><td>本田</td><td class="process">22885564<span class="process-wrapper"><span class="process-container"></span></span></td></tr>
+                    <tr><td>5</td><td>福特</td><td class="process">22314792<span class="process-wrapper"><span class="process-container"></span></span></td></tr>
+                    <tr><td>6</td><td>宝马</td><td class="process">21444077<span class="process-wrapper"><span class="process-container"></span></span></td></tr>
+                    <tr><td>7</td><td>现代</td><td class="process">20114969<span class="process-wrapper"><span class="process-container"></span></span></td></tr>
+                    <tr><td>8</td><td>起亚</td><td class="process">19251680<span class="process-wrapper"><span class="process-container"></span></span></td></tr>
+                    <tr><td>9</td><td>奔驰</td><td class="process">19172837<span class="process-wrapper"><span class="process-container"></span></span></td></tr>
+                    <tr><td>10</td><td>别克</td><td class="process">18544027<span class="process-wrapper"><span class="process-container"></span></span></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -920,4 +952,29 @@
     </div>
   </div>
 </body>
+<script src="https://apps.bdimg.com/libs/jquery/1.7.0/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var process=$(".process");
+    var total=$(process[0]).text()*1.2;console.log(total);
+    for (var i = 0; i < process.length; i++) {
+      var num=$(process[i]).text();
+      var width=num/total*100;
+      $($(".process-container")[i]).css({"width":width+"%"})
+      // console.log(width);
+    }
+    $(".tab li").click(function(){
+      $(this).addClass("select").siblings().removeClass("select");//siblings()获得该元素的同胞
+    })
+    // toggle  1.9被移除
+    $(".dropdown").toggle(
+      function(){
+        $(this).children(".dropmenu").hide();
+      },
+      function(){
+        $(this).children(".dropmenu").show();
+      }
+    )
+  })
+</script>
 </html>
