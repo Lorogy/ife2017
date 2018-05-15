@@ -90,6 +90,7 @@
   <!-- 添加 favicon icon -->
 
   <title>移动Web页面布局实践</title>
+  <link rel="stylesheet" href="./../css/iconfont.css">
   <style type="text/css">
     * {
       box-sizing: border-box;
@@ -98,12 +99,206 @@
       font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
       font-size: 16px;
     }
+    ul {
+      list-style: none;
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+    body,.main {
+      background: #F5F5F5;
+    }
+    header .head{
+      height: 115px;
+      width: 100%;
+      background-color: #91D4DA;
+      line-height: 115px;
+      display: flex;
+      flex-flow: row nowrap;
+    }
+    header .head>div {
+      color: #fff;
+      font-size: 50px;
+    }
+    header .head .back {
+      flex: none;
+    }
+    header .head .back .iconfont {
+      font-size: 50px;
+    }
+    header .head .title {
+      flex: auto;
+      text-align: center;
+      margin-left: -150px;
+    }
+    header .nav {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-start;
+      justify-content: space-around;
+    }
+    header .nav li {
+      height: 118px;
+      line-height: 118px;
+      flex: auto;
+      text-align: center;
+    }
+    header .nav li a {
+      font-size: 40px;
+      color: #656565;
+    }
+    header .nav li:nth-of-type(2) {
+      border-bottom: 10px solid #91D4DA;
+    }
+    .main>div {
+      background: #fff;
+    }
+    .main .part1 img{
+      width: 100%;
+    }
+    .main .part2 {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-start;
+      justify-content: space-around;
+      margin-top: 50px;
+    }
+    .main .part2 .item {
+      flex: auto;
+      text-align: center;
+    }
+    .main .part2 .item img {
+    }
+    .main .part2 .item p {
+      font-size: 40px;
+      color: #2E2E2E;
+      line-height: 200%;
+    }
+    .main .part3 {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-start;
+      justify-content: space-around;
+      padding: 30px 0;
+      margin: 30px;
+      border-top: 2px solid #DFDFDF;
+    }
+    .main .part3 .item {
+      flex: auto;
+      text-align: center;
+    }
+    .main .part3 .item:nth-of-type(2) {
+      border-left: 2px solid #DFDFDF;
+      border-right: 2px solid #DFDFDF;
+    }
+    .main .part3 .item img {
+      height: 182px;
+    }
+    .main .part3 .item h2 {
+      font-size: 40px;
+      color: #2E2E2E;
+      line-height: 200%;
+    }
+    .main .part3 .item h3 {
+      font-size: 30px;
+      color: #666666;
+      line-height: 200%;
+    }
+    .main .part4 {
+      margin-top: 50px;
+      padding: 30px;
+      color: #666666;
+      margin-bottom: 50px;
+    }
+    .main .part4 h2 {
+      font-size: 46px;
+      line-height: 200%;
+    }
+    .main .part4 .container {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-top: 50px;
+    }
+    .main .part4 .container:first-of-type {
+      border-top: 2px solid #DFDFDF
+    }
+    .main .part4 .container .item {
+      flex: none;
+    }
+    .main .part4 .container img {
+      width: 239px;
+      height: 225px;
+      border: 2px solid #FEB431;
+    }
+    .main .part4 .container .item-flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 225px;
+      width: 320px;
+    }
+    .main .part4 .container .item-flex span {
+      display: block;
+      flex: none;
+      text-align: center;
+      font-size: 35px;
+      background: #F8F8F8;
+      height: 100px;
+      line-height: 100px;
+    }
+    .main .part5 {
+      padding: 20px 30px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-flow: row wrap;
+    }
+    .main .part5 .item1 {
+      flex: none;
+    }
+    .main .part5 .item2 {
+      flex: auto;
+      padding-left: 30px;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+    }
+    .main .part5 .item2 h2,.main .part6 h2 {
+      font-size: 40px;
+      color: #656565;
+    }
+    .main .part5 .item2 h3 span,.main .part6 h3 span {
+      display: inline-block;
+      font-size: 30px;
+      color: #C6C6C6;
+    }
+    .main .part5 .item2 h3 span:last-of-type,.main .part6 h3 span:last-of-type {
+      margin-left: 20px;
+    }
+    .main .part6 {
+      padding: 0 30px;
+    }
+    .main .part6 h2,.main .part6 h3 {
+      line-height: 300%;
+    }
+    .main .part6 .container {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
+    .main .part6 .container img {
+      flex: none;
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="back">返回</div>
-    <h1>这是标题</h1>
+    <div class="head">
+      <div class="back"> <i class="icon iconfont icon-fanhui"></i>返回</div>
+      <div class="title">这是标题</div>
+    </div>
     <ul class="nav">
       <li><a href="#">导航</a></li>
       <li><a href="#">导航</a></li>
@@ -114,7 +309,7 @@
   </header>
   <div class="main">
     <div class="part1">
-      <img src="./../images/1-11/big-bg.png" alt="bear">
+      <img src="./../images/1-11/big-bg.png" alt="bear"/>
     </div>
     <div class="part2">
       <div class="item"><img src="./../images/1-11/tag.png"><p>标签</p></div>
@@ -123,7 +318,6 @@
       <div class="item"><img src="./../images/1-11/tag.png"><p>标签</p></div>
       <div class="item"><img src="./../images/1-11/tag.png"><p>标签</p></div>
     </div>
-    <div class="hr"></div>
     <div class="part3">
       <div class="item"><img src="./../images/1-11/bear-sm.png"><h2>分栏一</h2><h3>分栏小标题</h3></div>
       <div class="item"><img src="./../images/1-11/bear-sm.png"><h2>分栏一</h2><h3>分栏小标题</h3></div>
@@ -131,42 +325,42 @@
     </div>
     <div class="part4">
       <h2>模块一</h2>
-      <div class="hr"></div>
       <div class="container">
         <div class="item"><img src="./../images/1-11/bear-icon.png"></div>
-        <div class="item"><span>这是文案</span><span>这是文案</span></div>
-        <div class="item"><span>这是文案</span><span>这是文案</span></div>
+        <div class="item item-flex"><span>这是文案</span><span>这是文案</span></div>
+        <div class="item item-flex"><span>这是文案</span><span>这是文案</span></div>
+      </div>
+      <div class="container">
         <div class="item"><img src="./../images/1-11/bear-icon.png"></div>
-        <div class="item"><span>这是文案</span><span>这是文案</span></div>
-        <div class="item"><span>这是文案</span><span>这是文案</span></div>
+        <div class="item item-flex"><span>这是文案</span><span>这是文案</span></div>
+        <div class="item item-flex"><span>这是文案</span><span>这是文案</span></div>
       </div>
     </div>
     <div class="part4">
       <h2>模块二</h2>
-      <div class="hr"></div>
       <div class="container">
         <div class="item"><img src="./../images/1-11/bear-icon.png"></div>
-        <div class="item"><span>这是文案</span><span>这是文案</span></div>
-        <div class="item"><span>这是文案</span><span>这是文案</span></div>
+        <div class="item item-flex"><span>这是文案</span><span>这是文案</span></div>
+        <div class="item item-flex"><span>这是文案</span><span>这是文案</span></div>
+      </div>
+      <div class="container">
         <div class="item"><img src="./../images/1-11/bear-icon.png"></div>
-        <div class="item"><span>这是文案</span><span>这是文案</span></div>
-        <div class="item"><span>这是文案</span><span>这是文案</span></div>
+        <div class="item item-flex"><span>这是文案</span><span>这是文案</span></div>
+        <div class="item item-flex"><span>这是文案</span><span>这是文案</span></div>
       </div>
     </div>
     <div class="part5">
-      <div class="item1">
-        <div><img src="./../images/1-11/bear-md.png"></div>
-        <div><h2>这是文章标题字号是22的文章标题</h2><h3><span>文章来源</span><span>6分钟前</span></h3></div>
-      </div>
-      <div class="item2">
-        <div><img src="./../images/1-11/bear-md.png"></div>
-        <div><h2>这是文章标题字号是22的文章标题</h2><h3><span>文章来源</span><span>6分钟前</span></h3></div>
-      </div>
-      <div class="item3">
-        <h2>这是文章标题字号是22的文章标题</h2>
-        <div><img src="./../images/1-11/bear-md.png"><img src="./../images/1-11/bear-md.png"><img src="./../images/1-11/bear-md.png"></div>
-        <h3><span>文章来源</span><span>6分钟前</span></h3>
-      </div>
+      <div class="item1"><img src="./../images/1-11/bear-md.png"></div>
+      <div class="item2"><h2>这是文章标题字号是22的文章标题</h2><h3><span>文章来源</span><span>6分钟前</span></h3></div>
+    </div>
+    <div class="part5">
+      <div class="item1"><img src="./../images/1-11/bear-md.png"></div>
+      <div class="item2"><h2>这是文章标题字号是22的文章标题</h2><h3><span>文章来源</span><span>7分钟前</span></h3></div>
+    </div>
+    <div class="part6">
+      <h2>这是文章标题字号是22的文章标题</h2>
+      <div class="container"><img src="./../images/1-11/bear-md.png"><img src="./../images/1-11/bear-md.png"><img src="./../images/1-11/bear-md.png"></div>
+      <h3><span>文章来源</span><span>7分钟前</span></h3>
     </div>
   </div>
 </body>

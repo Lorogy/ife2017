@@ -191,11 +191,13 @@
       padding-left: 30px;
     }
     .main>.mainbody>.navbar>ul>li {
-      float: left;
+      display: inline-block;
+      /*float: left;*/
       color: #aaa;
     }
-    .main>.mainbody>.navbar>ul>li:nth-of-type(even) {
-      margin: 0 5px;
+    .main>.mainbody>.navbar>ul>li+li:before {
+      color: #aaa;
+      content: "/\00a0";
     }
     .main>.mainbody>.navbar>ul>li>a {
       display: inline-block;
@@ -733,13 +735,10 @@
       </div>
       <div class="mainbody">
         <div class="navbar">
-          <ul class="clearfix">
+          <ul>
             <li><a href="#">C站</a></li>
-            <li>/</li>
             <li><a href="#">个人报表</a></li>
-            <li>/</li>
             <li><a href="#">文件二</a></li>
-            <li>/</li>
             <li class="select"><a href="#">文档一</a></li>
           </ul>
         </div>

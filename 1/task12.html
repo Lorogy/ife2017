@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>学习CSS3的新特性</title>
+</head>
+<style type="text/css">
+  * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+      font-size: 16px;
+    }
+    ul {
+      list-style: none;
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+    body {
+      background: #F5F5F5;
+      max-width: 213px;
+    }
+    body>div {
+      margin: 20px 0;
+    }
+    .part1 table thead td {
+      color: white;
+      background: black;
+    }
+    .part1 table tbody tr:nth-of-type(even) td {
+      background: gray;
+    }
+    .part1 table tbody tr:nth-of-type(1),.part1 table tbody tr:nth-of-type(2),.part1 table tbody tr:nth-of-type(3) {
+      color: red;
+    }
+    .part2 .border1 {
+      width: 100px;
+      height: 20px;
+      border: 1px solid gray;
+      margin: 10px auto;
+    }
+    .part2 .border2 {
+      width: 200px;
+      height: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px blue;
+      margin: 10px auto;
+    }
+    .part3>div {
+      margin: 10px;
+      width: 250px;
+      height: 100px;
+      display: flex;
+      flex-flow: row nowrap;
+    }
+    .part3 .flex1,.part3 .flex3 {;
+      background: green;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+    .part3 .flex1 .item,.part3 .flex2 .item2 .item,.part3 .flex3 .item {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      color: white;
+      background: rgba(255,255,255,0.5);
+    }
+    .part3 .flex1 .item+.item,.part3 .flex2 .item2 .item+.item,.part3 .flex3 .item+.item {
+      margin-left: 2px;
+    }
+    .part3 .flex2>div {
+      flex: auto;
+      width: 50%;
+    }
+    .part3 .flex2 .item1{
+      background: blue;
+    }
+    .part3 .flex2 .item2{
+      background: green;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+    .part3 .flex3 {
+      background: blue;
+    }
+    .part4 {
+      column-count: 3;
+      column-gap: 10px;
+      column-rule: 1px solid gray;
+      background: rgba(0,0,0,0.5);
+    }
+    .part4 h2 {
+      column-span: all;
+      text-align: center;
+    }
+    .part5>img {
+      padding: 10px;
+      width: 100%;
+      height: auto;
+      border: 1px solid orange;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+    .part5>img:hover {
+      filter: hue-rotate(180deg);
+      border: 1px solid blue;
+    }
+    .part5 .model {
+      padding: 100px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.8);
+      display: none;
+    }
+    .part5 .model .close {
+      position: absolute;
+      right: 100px;
+      padding: 20px 0;
+      padding-right: 50px;
+      color: white;
+      font-size: 50px;
+    }
+    .part5 .model .close:hover,.part5 .model .close:focus {
+      color: red;
+      cursor: pointer;
+    }
+    .part5 .model .md-img {
+      width: 100%;
+      height: auto;
+      animation: modelanimation 0.5s;
+    }
+    .part5 .model .info-img {
+      text-align: center;
+      padding: 20px 0;
+      color: white;
+      font-size: 50px;
+    }
+    @keyframes modelanimation {
+      from {transform: scale(0.1)}
+      to {transform: scale(1)}
+    }
+</style>
+<body>
+  <!-- table -->
+  <div class="part1">
+    <table>
+      <thead>
+        <tr><td>排名</td><td>网站</td><td>热度</td></tr>
+      </thead>
+      <tbody>
+        <tr><td>1.</td><td>百度前端技术学院</td><td>13000</td></tr>
+        <tr><td>2.</td><td>百度前端技术学院</td><td>12000</td></tr>
+        <tr><td>3.</td><td>百度前端技术学院</td><td>11000</td></tr>
+        <tr><td>4.</td><td>百度前端技术学院</td><td>10000</td></tr>
+        <tr><td>5.</td><td>百度前端技术学院</td><td>9000</td></tr>
+        <tr><td>6.</td><td>百度前端技术学院</td><td>8000</td></tr>
+        <tr><td>7.</td><td>百度前端技术学院</td><td>7000</td></tr>
+        <tr><td>8.</td><td>百度前端技术学院</td><td>6000</td></tr>
+        <tr><td>9.</td><td>百度前端技术学院</td><td>5000</td></tr>
+        <tr><td>10.</td><td>百度前端技术学院</td><td>4000</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- 边框阴影效果 -->
+  <div class="part2">
+    <div class="border1"></div>
+    <div class="border2"></div>
+  </div>
+  <!-- flex布局 -->
+  <div class="part3">
+    <div class="flex1">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+    <div class="flex2">
+      <div class="item1"></div>
+      <div class="item2">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+      </div>
+    </div>
+    <div class="flex3">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+  </div>
+  <!-- 分栏 -->
+  <div class="part4">
+    <h2>title</h2>
+    百度前端技术学院的课程任务是由百度前端工程师专为对前端不同掌握程度的同学设计。我们尽力保证课程内容的质量以及学习难度的合理性，但即使如此，真正决定课程效果的，还是你的每一次思考和实践。
+  </div>
+  <!-- 图片（缩略图 滤镜 模态框 动画） -->
+  <div class="part5">
+    <img id="img" src="./../images/1-11/big-bg.png" alt="可爱小熊">
+    <div id="myModel" class="model">
+      <div class="close">x</div>
+      <img id="md-img" class="md-img">
+      <div id="info-img" class="info-img"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var img=document.getElementById("img");
+    var model=document.getElementById("myModel");
+    var mdimg=document.getElementById("md-img");
+    var infoimg=document.getElementById("info-img");
+    img.onclick=function(){
+      model.style.display="block";
+      mdimg.src=this.src;
+      mdimg.alt=this.alt;
+      infoimg.innerHTML=this.alt;
+    }
+    var close=document.getElementsByClassName("close")[0];
+    close.onclick=function(){
+      model.style.display="none";
+    }
+  </script>
+</body>
+</html>
