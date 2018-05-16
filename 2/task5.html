@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>基础JavaScript练习（二）</title>
+  <style type="text/css">
+    #container,#resort {
+      padding: 20px;
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-end;
+    }
+    #container>div,#resort>div {
+      width: 50px;
+      background: red;
+      text-align: center;
+      margin-right: 10px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div display="flex">
+    <input type="text" name="input" placeholder="请输入10-100之间的数字">
+    <button id="btnleftin">左侧入</button>
+    <button id="btnrightin">右侧入</button>
+    <button id="btnleftout">左侧出</button>
+    <button id="btnrightout">右侧出</button>
+    <button id="sort">排序</button>
+  </div>
+  <div id="container"></div>
+  <div id="resort"></div>
+  <script type="text/javascript">
+    var textInput=document.getElementsByName("input")[0];
+    var container=document.getElementById("container");
+    var btnleftin=document.getElementById("btnleftin");
+    var btnrightin=document.getElementById("btnrightin");
+    var btnleftout=document.getElementById("btnleftout");
+    var btnrightout=document.getElementById("btnrightout");
+    var sort=document.getElementById("sort");
+    btnleftin.onclick=function(){
+      container=document.getElementById("container");
+      if (container.childNodes.length>60) alert("元素队列最多60");
+      else {
+        var textInput=document.getElementsByName("input")[0].value*1;
+        if(textInput<=100&&textInput>=10){
+          var div=document.createElement("div");
+          div.innerHTML=textInput;
+          div.style.height=textInput+"px";
+          div.style.lineHeight=textInput+"px";
+          container.insertBefore(div,container.childNodes[0]);
+        }
+      }
+    }
+    btnrightin.onclick=function(){
+      container=document.getElementById("container");
+      if (container.childNodes.length>60) alert("元素队列最多60");
+      else {
+        var textInput=document.getElementsByName("input")[0].value*1;
+        if(textInput<=100&&textInput>=10){
+          var div=document.createElement("div");
+          div.innerHTML=textInput;
+          div.style.height=textInput+"px";
+          div.style.lineHeight=textInput+"px";
+          container.appendChild(div);
+        }
+      }
+    }
+    btnleftout.onclick=function(){
+      container.removeChild(container.firstChild);
+    }
+    btnrightout.onclick=function(){
+      container.removeChild(container.lastChild);
+    }
+    sort.onclick=function(){
+      container=document.getElementById("container");
+      var childs=container.childNodes;
+      var resort=document.getElementById("resort");
+      resort.innerHTML="";
+      var arr=[];
+      for(var i=0;i<childs.length;i++){
+        arr.push(childs[i].innerHTML*1);
+      }console.log(arr);
+      arr.sort();
+      for(var j=0;j<arr.length;j++){
+        var div=document.createElement("div");
+        div.innerHTML=arr[j];
+        div.style.height=arr[j]+"px";
+        div.style.lineHeight=arr[j]+"px";
+        resort.appendChild(div);
+      }
+    }
+  </script>
+</body>
+</html>

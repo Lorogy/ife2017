@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>基础JavaScript练习（三）</title>
+  </style>
+  <style type="text/css">
+    #container {
+      padding: 20px;
+      display: flex;
+      flex-flow: row wrap;
+    }
+    #container>div {
+      height: 50px;
+      background: gray;
+      text-align: center;
+      line-height: 50px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div display="flex">
+    <textarea rows="5" cols="50"></textarea>
+    <br>
+    <button id="insert">插入</button>
+    <input type="text" name="find">
+    <button id="btnfind">查询</button>
+    <div id="container"></div>
+  </div>
+  <div id="container"></div>
+  <script type="text/javascript">
+    var insert=document.getElementById("insert");
+    var btnfind=document.getElementById("btnfind");
+    var container=document.getElementById("container");
+    // 点击将内容批量生成元素
+    insert.onclick=function(){
+      var text=document.getElementsByTagName("textarea");
+      var arr=text[0].value.split(/[^\w\u4e00-\u9fa5]+/);//除字母数字下划线和汉字以外
+      for(var i=0;i<arr.length;i++) {
+        var div=document.createElement("div");
+        div.innerHTML=arr[i];
+        container.appendChild(div);
+      }
+    }
+    // 点击修改内容包含查询字符的元素的样式
+    btnfind.onclick=function(){
+      var findtext=document.getElementsByName("find")[0].value;
+      container=document.getElementById("container");
+      var childNodes=container.childNodes;
+      for(var j=0;j<childNodes.length;j++) {
+        var item=childNodes[j].innerHTML;
+        var reg=new RegExp(findtext,"g");//变量正则
+        // var reg=eval('/'+findtext+'/g')
+        if(reg.test(item)) {
+          childNodes[j].style.backgroundColor="yellow";
+        }
+      }
+    }
+  </script>
+</body>
+</html>

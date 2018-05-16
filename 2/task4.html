@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>基础JavaScript练习（一）</title>
+  <style type="text/css">
+    #container {
+      padding: 20px;
+      display: flex;
+      flex-flow: row wrap;
+    }
+    #container>div {
+      width: 50px;
+      height: 50px;
+      background: red;
+      text-align: center;
+      line-height: 50px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div display="flex">
+    <input type="text" name="input">
+    <button id="btnleftin">左侧入</button>
+    <button id="btnrightin">右侧入</button>
+    <button id="btnleftout">左侧出</button>
+    <button id="btnrightout">右侧出</button>
+  </div>
+  <div id="container"></div>
+  <script type="text/javascript">
+    var textInput=document.getElementsByName("input")[0];
+    var container=document.getElementById("container");
+    var btnleftin=document.getElementById("btnleftin");
+    var btnrightin=document.getElementById("btnrightin");
+    var btnleftout=document.getElementById("btnleftout");
+    var btnrightout=document.getElementById("btnrightout");
+    btnleftin.onclick=function(){
+      var textInput=document.getElementsByName("input")[0].value;
+      var div=document.createElement("div");
+      div.innerHTML=textInput;
+      container.insertBefore(div,container.childNodes[0]);
+    }
+    btnrightin.onclick=function(){
+      var textInput=document.getElementsByName("input")[0].value;
+      var div=document.createElement("div");
+      div.innerHTML=textInput;
+      container.appendChild(div);
+    }
+    btnleftout.onclick=function(){
+      container.removeChild(container.firstChild);
+    }
+    btnrightout.onclick=function(){
+      container.removeChild(container.lastChild);
+    }
+  </script>
+</body>
+</html>
