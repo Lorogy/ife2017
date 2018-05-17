@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript和树（三）</title>
+  <style type="text/css">
+    .wrapper {
+      display: flex;
+    }
+    .wrapper div {
+      display: flex;
+      padding: 5px;
+      border: 1px solid #000;
+      flex: none;
+      margin: 0 3px;
+      flex-flow: row nowrap;
+      background-color: #fff;
+    }
+    .btn {
+      display: flex;
+      margin-top: 20px;
+    }
+    .btn button {
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper" id="wrapper">
+    <div id="root">Super
+      <div id="1-1">Car
+        <div id="2-1">Apple
+          <div id="3-1">Pear</div>
+          <div id="3-2">Pig</div>
+          <div id="3-3">Cola</div>
+          <div id="3-4">Soccer</div>
+        </div>
+        <div id="2-2">Phone</div>
+        <div id="2-3">
+          <div id="3-1">Book</div>
+          <div id="3-2">School</div>
+        </div>
+      </div>
+      <div id="1-2">Note
+        <div id="2-1">Human
+          <div id="3-1">Code</div>
+          <div id="3-2">Operte</div>
+          <div id="3-3">Man</div>
+        </div>
+        <div id="2-2">Program
+          <div id="3-1">Bemen
+            <div id="4-1">Cat</div>
+          </div>
+          <div id="3-2">Class</div>
+        </div>
+      </div>
+      <div id="1-3">Fish</div>
+    </div>
+  </div>
+  <div class="btn">
+    <button id="del">删除</button>
+    <input type="text" name="addtext">
+    <button id="add">增加</button>
+  </div>
+  <script type="text/javascript">
+    var allnodes=document.getElementById("wrapper");
+    var del=document.getElementById("del");
+    var add=document.getElementById("add");
+    var target;
+    // 事件委托,事件绑定
+    allnodes.addEventListener("click",function(event){
+      target=event.target;
+      if(target.nodeName=="DIV"){
+        target.style.backgroundColor="green";
+      }
+    });
+    // 删除当前被选中元素
+    del.onclick=function(){
+      target.parentNode.removeChild(target);//js只有删除子节点方法
+    };
+    // 为当前被选中元素增加新子元素
+    add.onclick=function(){
+      var addtext=document.getElementsByName("addtext")[0].value;
+      var divnode=document.createElement("div");
+      divnode.innerHTML=addtext;
+      target.appendChild(divnode);
+    };
+  </script>
+</body>
+</html>

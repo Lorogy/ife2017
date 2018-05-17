@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript和树（一）</title>
+  <style type="text/css">
+    .wrapper {
+      display: flex;
+    }
+    .wrapper div {
+      display: flex;
+      padding: 20px;
+      border: 1px solid #000;
+      flex: none;
+      margin: 0 5px;
+      flex-flow: row nowrap;
+      background-color: #fff;
+    }
+    .btn {
+      display: flex;
+      margin-top: 20px;
+    }
+    .btn button {
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div id="root"><div id="1-1"><div id="2-1"><div id="3-1"></div><div id="3-2"></div></div><div id="2-2"><div id="3-1"></div><div id="3-2"></div></div></div><div id="1-2"><div id="2-1"><div id="3-1"></div><div id="3-2"></div></div><div id="2-2"><div id="3-1"></div><div id="3-2"></div></div></div></div>
+  </div>
+  <div class="btn">
+    <button id="1">前序遍历DLR</button>
+    <button id="2">中序遍历LDR</button>
+    <button id="3">后序遍历LRD</button>
+  </div>
+  <script type="text/javascript">
+    var root=document.getElementById("root");
+    var arr=[];//记录遍历节点路径，用于颜色动画显示路径
+    var last;//记录上一个节点，用于恢复上一个节点背景颜色
+    var flag=true;//用于防止操作中断，必须一次遍历执行完成后，按钮才有效
+
+    var btn1=document.getElementById("1");
+    var btn2=document.getElementById("2");
+    var btn3=document.getElementById("3");
+    btn1.onclick=function() {
+      if(flag){
+        flag=false;
+        init();
+        Preorder(root);
+        console.log(arr);
+        changeColor();
+      }
+    };
+    btn2.onclick=function() {
+      if(flag){
+        flag=false;
+        init();
+        Inorder(root);
+        console.log(arr);
+        changeColor();
+      }
+    };
+    btn3.onclick=function() {
+      if(flag){
+        flag=false;
+        init();
+        Posorder(root);
+        console.log(arr);
+        changeColor();
+      }
+    };
+    // 前序遍历
+    function Preorder(curnode) {
+      if(curnode==null||undefined) return;
+      arr.push(curnode);
+      Preorder(curnode.firstElementChild);
+      Preorder(curnode.lastElementChild);
+    }
+    // 中序遍历
+    function Inorder(curnode) {
+      if(curnode==null||undefined) return;
+      Inorder(curnode.firstElementChild);
+      arr.push(curnode);
+      Inorder(curnode.lastElementChild);
+    }
+    // 后序遍历
+    function Posorder(curnode) {
+      if(curnode==null||undefined) return;
+      Posorder(curnode.firstElementChild);
+      Posorder(curnode.lastElementChild);
+      arr.push(curnode);
+    }
+    //遍历前初始化，重置arr
+    function init() {
+      arr=[];
+      if(last) {
+        last.style.backgroundColor="white";
+      }
+    }
+    // 闭包函数，可以保存i变量，在规定时间触发
+    function changeColor() {
+      for(var i=0;i<arr.length;i++) {
+        setTimeout(function(i) {
+          return function() {
+            if(i==arr.length-1) {
+              flag=true;//一次遍历执行完
+            }
+            if(last) {
+              last.style.backgroundColor="white";//将上一个节点恢复背景
+            }
+            last=arr[i];
+            arr[i].style.backgroundColor="blue"
+          }
+        }(i),1000*i)
+      }
+    }
+  </script>
+</body>
+</html>
