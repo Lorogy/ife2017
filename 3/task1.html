@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>表单（一）单个表单项的检验</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+      font-size: 20px;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    .wrapper {
+      margin: 20px;
+    }
+    label,input,button {
+      font-size: 20px;
+      border-radius: 5px;
+      padding: 10px 20px;
+    }
+    input {
+      margin: 0 20px;
+    }
+    button {
+      background-color: #2E78B9;
+      color: #fff;
+      border-style: none;
+    }
+    #info {
+      margin-top: 20px;
+      padding: 10px 20px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <form>
+      <label for="nametext">名称</label><input type="text" name="nametext"><button type="button" onclick="check()">验证</button>
+      <div id="info">必填，字符数为4-16位</div>
+    </form>
+  </div>
+  <script type="text/javascript">
+    function getChars(str){
+      var len=0;
+      for(var i=0;i<str.length;i++) {
+        var char=str.charAt(i);
+        if(char.search(/[^\x00-\xff]/gi)>-1){
+          len+=2;
+        }else{
+          len+=1;
+        }
+      }
+      console.log(len);
+      return len;
+    }
+    function check(){
+      var nameinput=document.getElementsByName("nametext")[0];
+      var info=document.getElementById("info");
+      var value=nameinput.value;
+      console.log(value);
+      var length=getChars(value);
+      if(value!=null&&value!=""){
+        if(length<4||length>16) {
+          console.log("字符数应为4-16位");
+          info.innerHTML="字符数应为4-16位";
+          info.style.color="red";
+          nameinput.style.border="1px solid red";
+        }else {
+          console.log("名称格式正确");
+          info.innerHTML="名称格式正确";
+          info.style.color="green";
+          nameinput.style.border="1px solid green";
+        }
+      }else {
+        console.log("名称不能为空");
+        info.innerHTML="名称不能为空";
+        info.style.color="red";
+        nameinput.style.border="1px solid red";
+      }
+    }
+  </script>
+</body>
+</html>

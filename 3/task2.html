@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>表单（二）多个表单项的动态校验</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+      font-size: 20px;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    .wrapper {
+      margin: 20px;
+    }
+    tr {
+      margin: 10px 0;
+    }
+    input {
+      font-size: 20px;
+      border-radius: 5px;
+      padding: 10px 20px;
+    }
+    input[type="submit"] {
+      background: #2E78B9;
+      color: white;
+      border-style: none;
+    }
+    tr td:first-of-type {
+      vertical-align: top;
+    }
+    tr:last-of-type td {
+      text-align: right;
+    }
+    label {
+      display: inline-block;
+      padding: 10px 20px;
+    }
+    div[id*="info"] {
+      font-size: 16px;
+      padding: 5px 0 20px;
+      color: gray;
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <form>
+      <table>
+        <tr>
+          <td><label for="nametext">名称</label></td>
+          <td>
+            <input type="text" name="nametext" onfocus="infoshow(1)" onblur="check(this,1)">
+            <div id="info1">必填，字符数为4-16位</div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="password1">密码</label></td>
+          <td>
+            <input type="password" name="password1" onfocus="infoshow(2)" onblur="check(this,2)">
+            <div id="info2">必填，输入密码</div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="password2">密码确认</label></td>
+          <td>
+            <input type="password" name="password2" onfocus="infoshow(3)" onblur="check(this,3)">
+            <div id="info3">必填，再次输入相同密码</div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="email">邮箱</label></td>
+          <td>
+            <input type="email" name="email" onfocus="infoshow(4)" onblur="check(this,4)">
+            <div id="info4">必填</div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="phonenum">手机</label></td>
+          <td>
+            <input type="text" name="phonenum" onfocus="infoshow(5)" onblur="check(this,5)">
+            <div id="info5">必填</div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><input type="button" name="submitbtn" value="提交" onclick="submitform()"></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <script type="text/javascript">
+    var err=[5];
+    // 获取字符串字符数量，英文1字符，中文2字符，\x00-\xff英文字母符号0-9
+    function getChars(str){
+      var len=0;
+      for(var i=0;i<str.length;i++) {
+        var char=str.charAt(i);
+        if(char.search(/[^\x00-\xff]/gi)>-1){
+          len+=2;
+        }else{
+          len+=1;
+        }
+      }
+      return len;
+    }
+    // 校验结果正确样式
+    function correctStyle(item1,item2){
+      item1.style.color="green";
+      item2.style.border="1px solid green";
+    }
+    // 校验结果错误样式
+    function errorStyle(item1,item2){
+      item1.style.color="red";
+      item2.style.border="1px solid red";
+    }
+    // 失去焦点，具体校验
+    function check(target,n){console.log(n);
+      var info=document.getElementById("info"+n);
+      switch(n){
+        case 1:
+          var length1=getChars(target.value);
+          if(target.value!=null&&target.value!=""){
+            if(length1<4||length1>16) {
+              err[0]="字符数应为4-16位";
+              info.innerHTML="字符数应为4-16位";
+              errorStyle(info,target);
+            }else {
+              err[0]=true;
+              info.innerHTML="名称格式正确";
+              correctStyle(info,target);
+            }
+          }else {
+            err[0]="名称不能为空";
+            info.innerHTML="名称不能为空";
+            errorStyle(info,target);
+          }
+          info.style.display="block";
+          break;
+        case 2:
+          if(target.value!=null&&target.value!=""){
+            if(target.value.length<6||target.value.length>20) {
+              err[1]="密码长度应为6-16位";
+              info.innerHTML="密码长度应为6-16位";
+              errorStyle(info,target);
+            }else {
+              err[1]=true;
+              info.innerHTML="密码可用";
+              correctStyle(info,target);
+            }
+          }else {
+            err[1]="密码不能为空";
+            info.innerHTML="密码不能为空";
+           errorStyle(info,target);
+          }
+          break;
+        case 3:
+          var psw1=document.getElementsByName("password1")[0].value;
+          if(target.value!=null&&target.value!=""){
+            if(target.value==psw1){
+              err[2]=true;
+              info.innerHTML="密码验证成功";
+              correctStyle(info,target);
+            }else {
+              err[2]="密码不一致";
+              info.innerHTML="密码不一致";
+              errorStyle(info,target);
+            }
+          }else {
+            err[2]="密码确认不能为空";
+            info.innerHTML="密码确认不能为空";
+            errorStyle(info,target);
+          }
+          break;
+        case 4:
+          var emailReg=/^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
+          if(target.value!=null&&target.value!=""){
+            if(emailReg.test(target.value)){
+              err[3]=true;
+              info.innerHTML="格式正确";
+              correctStyle(info,target);
+            }else {
+              err[3]="格式错误";
+              info.innerHTML="格式错误";
+              errorStyle(info,target);
+            }
+          }else {
+            err[3]="邮箱不能为空";
+            info.innerHTML="邮箱不能为空";
+            errorStyle(info,target);
+          }
+          break;
+        case 5:
+          var phonenumReg=/^1[3,4,5,7,8]\d{9}$/;
+          if(target.value!=null&&target.value!=""){
+            if(phonenumReg.test(target.value)){
+              err[4]=true;
+              info.innerHTML="格式正确";
+              correctStyle(info,target);
+            }else {
+              err[4]="格式错误";
+              info.innerHTML="格式错误";
+              errorStyle(info,target);
+            }
+          }else {
+            err[4]="手机不能为空";
+            info.innerHTML="手机不能为空";
+            errorStyle(info,target);
+          }
+          break;
+        default:
+          break;
+      }
+      info.style.visibility="visible";
+      console.log(err);
+    }
+    // 获得焦点，提示
+    function infoshow(n){
+      var info=document.getElementById("info"+n);
+      info.style.visibility="visible";
+    }
+    // 提交表单，校验所有
+    function submitform(){
+      for(var i=0;i<5;i++){
+        check(document.getElementsByTagName("input")[i],i+1);
+      }
+      for(var i=0;i<5;i++){
+        if(err[i]!=true){
+          alert("提交失败\n"+err[i]);
+          return;
+        }
+      }
+      alert("提交成功");
+    }
+  </script>
+</body>
+</html>
