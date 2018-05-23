@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>听指令的小方块（二）</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+      font-size: 20px;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    .wrapper {
+    }
+    table {
+      border-collapse: collapse;
+      text-align: center;
+      position: relative;
+    }
+    table td {
+      width: 50px;
+      height: 50px;
+      border: 1px solid gray;
+    }
+    table tr:first-of-type td {
+      border-style: none;
+      border-bottom: 2px solid black;
+      vertical-align: bottom;
+    }
+    table tr:last-of-type td {
+      border-bottom: 2px solid black;
+    }
+    table tr td:first-of-type {
+      border-style: none;
+      border-right: 2px solid black;
+    }
+    table tr td:last-of-type {
+      border-right: 2px solid black;
+    }
+    table tr:first-of-type td:first-of-type {
+      border-style: none;
+    }
+    table tr:first-of-type td:last-of-type {
+      border-right-style: none;
+    }
+    form {
+      padding: 10px 50px;
+    }
+    .me {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      transition: transform 1s,left 1s,top 1s;
+      /*top: 300px;
+      left: 300px;*/
+    }
+    #me1 {
+      height: 20%;
+      width: 100%;
+      background: blue;
+    }
+    #me2 {
+      height: 80%;
+      width: 100%;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <table>
+      <tr>
+        <td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+      </tr>
+      <tr>
+        <td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <div class="me" id="me"><div id='me1'></div><div id='me2'></div></div>
+    </table>
+    <form>
+      <select>
+        <option value="go" selected="selected">GO</option>
+        <option value="tleft">TUN LEF</option>
+        <option value="tright">TUN RIG</option>
+        <option value="tback">TUN BAC</option>
+        <option value="traleft">TRA LEF</option>
+        <option value="tratop">TRA TOP</option>
+        <option value="traright">TRA RIG</option>
+        <option value="trabottom">TRA BOT</option>
+        <option value="movleft">MOV LEF</option>
+        <option value="movtop">MOV TOP</option>
+        <option value="movright">MOV RIG</option>
+        <option value="movbottom">MOV BOT</option>
+      </select>
+      <input type="button" name="excute" value="执行" onclick="excutecommand()">
+    </form>
+  </div>
+  <script type="text/javascript">
+    var direct=1;//1-top,2-right,3-bottom,4-left；实时方向
+    var leftnum=1;//横坐标
+    var topnum=1;//纵坐标
+    var me=document.getElementById("me");
+// 初始化
+    (function init() {
+      direct=1
+      leftnum=6;
+      topnum=6;
+      settopleft(leftnum,topnum);
+    })()
+// 点击执行按钮所选执行指令
+    function excutecommand() {
+      var select=document.getElementsByTagName("select")[0];
+      var command=select.options[select.selectedIndex].value;//获取选中指令值
+      console.log(command);
+      switch(command){
+        case "go":
+          excutego();
+          break;
+        case "tleft":
+          excutetleft();
+          break;
+        case "tright":
+          excutetright();
+          break;
+        case "tback":
+          excutetback();
+          break;
+        case "traleft":
+          excutetraleft();
+          break;
+        case "tratop":
+          excutetratop();
+          break;
+        case "traright":
+          excutetraright();
+          break;
+        case "trabottom":
+          excutetrabottom();
+          break;
+        case "movleft":
+          excutemovleft();
+          break;
+        case "movtop":
+          excutemovtop();
+          break;
+        case "movright":
+          excutemovright();
+          break;
+        case "movbottom":
+          excutemovbottom();
+          break;
+        default:
+          break;
+      }
+    }
+// 按方向移动
+    function excutego() {
+      switch(direct){
+        case 1:
+          if(checknum(topnum-1)){
+            topnum--;
+          }
+          break;
+        case 2:
+          if(checknum(leftnum+1)){
+            leftnum++;
+          }
+          break;
+        case 3:
+          if(checknum(topnum+1)){
+            topnum++;
+          }
+          break;
+        case 4:
+          if(checknum(leftnum-1)){
+            leftnum--;
+          }
+          break;
+        default:
+          break;
+      }
+      settopleft(leftnum,topnum);
+    }
+// 左转90度
+    function excutetleft() {
+      switch(direct){
+        case 1:
+          direct=4;
+          me.style.transform="rotate(-90deg)";
+          break;
+        case 2:
+          direct=1;
+          me.style.transform="rotate(-360deg)";
+          break;
+        case 3:
+          direct=2;
+          me.style.transform="rotate(-270deg)";
+          break;
+        case 4:
+          direct=3;
+          me.style.transform="rotate(-180deg)";
+          break;
+        default:
+          break;
+      }
+    }
+// 右转90度
+    function excutetright() {
+      switch(direct){
+        case 1:
+          direct=2;
+          me.style.transform="rotate(90deg)";
+          break;
+        case 2:
+          direct=3;
+          me.style.transform="rotate(180deg)";
+          break;
+        case 3:
+          direct=4;
+          me.style.transform="rotate(270deg)";
+          break;
+        case 4:
+          direct=1;
+          me.style.transform="rotate(360deg)";
+          break;
+        default:
+          break;
+      }
+    }
+// 翻转
+    function excutetback() {
+      switch(direct){
+        case 1:
+          direct=3;
+          me.style.transform="rotate(180deg)";
+          break;
+        case 2:
+          direct=4;
+          me.style.transform="rotate(-90deg)";
+          break;
+        case 3:
+          direct=1;
+          me.style.transform="rotate(0deg)";
+          break;
+        case 4:
+          direct=2;
+          me.style.transform="rotate(90deg)";
+          break;
+        default:
+          break;
+      }
+    }
+// 向左移动
+    function excutetraleft() {
+      if(checknum(leftnum-1)){
+        leftnum--;
+      }
+      settopleft(leftnum,topnum);
+    }
+// 向上移动
+    function excutetratop() {
+      if(checknum(topnum-1)){
+        topnum--;
+      }
+      settopleft(leftnum,topnum);
+    }
+// 向右移动
+    function excutetraright() {
+      if(checknum(leftnum+1)){
+        leftnum++;
+      }
+      settopleft(leftnum,topnum);
+    }
+// 向下移动
+    function excutetrabottom() {
+      if(checknum(topnum+1)){
+        topnum++;
+      }
+      settopleft(leftnum,topnum);
+    }
+// 方向变为左，并向左移动，间隔1s
+    function excutemovleft() {
+      direct=4;
+      me.style.transform="rotate(-90deg)";
+      setTimeout(function(){excutetraleft();},1000);
+    }
+// 方向变为上，并向上移动
+    function excutemovtop() {
+      direct=1;
+      me.style.transform="rotate(0deg)";
+      setTimeout(function(){excutetratop();},1000);
+    }
+// 方向变为右，并向右移动
+    function excutemovright() {
+      direct=2;
+      me.style.transform="rotate(90deg)";
+      setTimeout(function(){excutetraright();},1000);
+    }
+// 方向变为下，并向下移动
+    function excutemovbottom() {
+      direct=3;
+      me.style.transform="rotate(180deg)";
+      setTimeout(function(){excutetrabottom();},1000);
+    }
+// 设置模块位置
+    function settopleft(lnum,tnum) {
+      me.style.left=lnum*50+"px";
+      me.style.top=tnum*50+"px";
+    }
+// 检查是否超出空间，10*10
+    function checknum(num) {
+      if(num>=1&&num<=10){
+        console.log(true);
+        return true;
+      }else{
+        console.log(false);
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
