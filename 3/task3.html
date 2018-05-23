@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>表单（三）联动</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+      font-size: 20px;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    .wrapper {
+      margin: 20px;
+    }
+    /*隐藏原按钮*/
+    input[type="radio"] {
+      position: absolute;
+      clip: rect(0 0 0 0);
+    }
+     /*label前生成伪元素，美化版按钮，非勾选状态*/
+    input[type="radio"]+label::before {
+      box-sizing: border-box;
+      content: "\a0";/*不换行空格*/
+      display: inline-block;
+      vertical-align: middle;
+      width: 1em;
+      height: 1em;
+      margin-right: .4em;
+      border-radius: 50%;
+      border: 1px solid gray;
+      text-indent: .15em;
+      line-height: 1;
+    }
+    /*label前生成伪元素，美化版按钮，勾选状态*/
+    input[type="radio"]:checked+label::before {
+      box-sizing: border-box;
+      border:0.3em solid #2D82D2;
+    }
+    label {
+      display: inline-block;
+    }
+    input,label,select {
+      font-size: 20px;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    table {
+      width: 70%
+    }
+    tr:nth-of-type(2) td:nth-of-type(2) {
+      width: 30%;
+    }
+    tr:nth-of-type(2) td:nth-of-type(3) {
+      width: 50%;
+    }
+    tr:nth-of-type(3) td:nth-of-type(2) {
+      width: 80%;
+    }
+    #ushanghai {
+      display: none;
+    }
+    #model2 {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <form>
+      <table>
+        <tr>
+          <td></td>
+          <td><input type="radio" name="status" value="inschool" id="inschool" onclick="toggle(this)"><label for="inschool">在校生</label></td>
+          <td><input type="radio" name="status" value="outschool" id="outschool" onclick="toggle(this)"><label for="outschool">非在校生</label></td>
+        </tr>
+        <tr id="model1">
+          <td><label>学校</label></td>
+          <td><select onchange="citytoggle(this)"><option value="beijing">北京</option><option value="shanghai">上海</option><option value="shanxi">山西</option></select></td>
+          <td>
+            <select id="ulist"><option>北京大学</option><option>清华大学</option></select>
+          </td>
+        </tr>
+        <tr id="model2">
+          <td><label for="jobcompany">就业单位</label></td>
+          <td colspan="2"><input type="text" name="jobcompany" id="jobcompany"></td>
+        </tr>
+    </table>
+    </form>
+  </div>
+  <script type="text/javascript">
+      function toggle(target){console.log("1");
+        var model1=document.getElementById("model1");
+        var model2=document.getElementById("model2");
+        if(target.value=="inschool"){
+          model1.style.display="table-row";
+          model2.style.display="none";
+        }else if(target.value=="outschool"){
+          model1.style.display="none";
+          model2.style.display="table-row";
+        }
+      }
+      var ucityArr={
+        'beijing':['北京大学','清华大学'],
+        'shanghai':['复旦大学','上海交通大学'],
+        'shanxi':['太原理工大学','山西大学']
+      };
+      //select onchange事件
+      function citytoggle(target){
+        // 获取须联动select
+        var ulist=document.getElementById("ulist");
+        // 获取当前被选中option的value值
+        var selectCity=target.options[target.selectedIndex].value;
+        // 获取该city对应的大学
+        var univercitys=ucityArr[selectCity];
+        // 移除所有option
+        while(ulist.options.length){
+          // ulist.options.remove(0);
+          ulist.remove(0);
+        }
+        // 重新添加对应option
+        if(univercitys){
+          for(var i=0;i<univercitys.length;i++){
+            var univercity=document.createElement("option");
+            univercity.innerHTML=univercitys[i];
+            // ulist.options.add(univercity);
+            ulist.add(univercity);
+          }
+        }
+      }
+  </script>
+</body>
+</html>
