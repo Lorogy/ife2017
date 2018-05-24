@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UI组件之浮出层</title>
+  <script src="./../js/jquery-1.9.1.js"></script>
+  <script src="./../js/jquery-ui.js"></script>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+      font-size: 20px;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    body {
+      background: rgba(255,0,0,0.2);
+      height: 2000px;
+    }
+    #model {
+      background: white;
+      border: 1px solid #000;
+      width: 500px;
+      min-height: 300px;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      display: none;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+      z-index: 1000;
+      resize: both;
+      cursor: move;
+    }
+    #model #model-head {
+      padding: 15px 20px;
+      background: #2E78B9;
+      color: white;
+      flex: none;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+    }
+    #model #model-head button {
+      border-style: none;
+      background-color: #2E78B9;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    #model #model-body {
+    flex: auto;
+    padding: 15px;
+    }
+    #model #model-foot {
+      flex: none;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-end;
+    }
+    #model #model-foot button {
+    width: 100px;
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #2E78B9;
+    color: #fff;
+    border-style: none;
+    flex: none;
+    margin: 10px;
+    cursor: pointer;
+    }
+    #mask {
+      background: rgba(0,0,0,0.6);
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      display: none;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <button onclick="mymodel()">click me</button>
+    <div id="mask"></div>
+    <div id="model">
+      <div id="model-head">浮出层头部<button class="close">x</button></div>
+      <div id="model-body">
+        浮出层主体内容
+      </div>
+      <div id="model-foot"><button class="close">确定</button><button class="close">取消</button></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+   /* // 创建自定义事件管理器
+    function EventTarget() {
+      this.handlers={};//存储事件处理函数的一个对象
+    }
+    EventTarget.protoType={
+      constructor:EventTarget,
+      // 添加事件方法，事件类型type，回调函数handler
+      addHandler:function(type,handler){
+        // 遍历判断该事件类型是否存在，若存在直接添加回调函数，否则先创建该事件类型
+        if(typeof this.handlers[type] == 'undefined'){
+          this.handlers[type]=[];
+        }
+        this.handlers[type].push(handler);
+      },
+      // 触发执行该事件的所有回调函数
+      excuteHandler:function(event){
+        if(!event.target){
+          event.target=this;
+        }
+        if(this.handlers[type] instanceof Array){
+          var handlers=this.handlers[event.type];//获取该事件类型下所有回调函数
+          // 执行该事件
+          for (var i = 0; i < handlers.length; i++) {
+            handlers[i](event);
+          }
+        }
+      },
+      // 删除某一事件的某一回调函数
+      removeHandler:function(type,handler){
+        if(this.handlers[type] instanceof Array){
+          var handlers=this.handlers[type];
+          for (var i = 0; i < handlers.length; i++) {
+            if(handlers[i]===handler){
+              break;
+            }
+          }
+          handlers.splice(i,1);
+        }
+      }
+    }*/
+    // 
+    var Event={
+      // on接口，监听事件eventName，事件被触发后执行
+      on:function(eventName,callback){
+        // 
+        if(!this.handles){
+          this.handles={}
+        }
+        if(!this.handles[eventName]){
+          this.handles[eventName]=[];
+        }
+        this.handles[eventName].push(callback);
+      },
+      // 触发事件函数
+      emit:function(eventName){
+        // 
+        if(this.handles[arguments[0]]){
+          for (var i = 0; i < this.handles[arguments[0]].length; i++) {
+            this.handles[arguments[0]][i](arguments[1]);
+          }
+        }
+      }
+    }
+    var model=document.getElementById("model");
+    var mask=document.getElementById("mask");
+    // 绑定事件
+    Event.on('show',function(){
+      model.style.display="flex";
+      mask.style.display="block";
+    });
+    Event.on('close',function(){
+      model.style.display="none";
+      mask.style.display="none";
+    });
+    // 建立接口
+    var Model={
+      show:function(){
+        Event.emit('show');
+      },
+      close:function(){
+        Event.emit('close');
+      }
+    }
+    mask.onclick=function(){
+      Model.close();
+    };
+    var closebtn=model.getElementsByClassName("close");
+    for (var i = 0; i < closebtn.length; i++) {
+      closebtn[i].onclick=function(){
+        Model.close();
+      }
+    }
+    // 使用
+    function mymodel(){
+      Model.show();
+    }
+
+    // jquery
+    // $("#model").resizable();
+
+    // 拖拽&&缩放（逻辑顺序非常重要）
+    var diffx=0,diffy=0,t0,b0,l0,r0,w,h,areaT,areaB,areaL,areaR,changeL,changeR,changeT,changeB,mousedownX,mousedownY,w,h;
+    var off=0,offf=0;//开关
+    // 鼠标按下，表示可以移动了
+    model.onmousedown=function(e){
+      var e=e||window.event;
+      // 目标宽高
+      w=model.offsetWidth;
+      h=model.offsetHeight;
+      // 鼠标按下时位置
+      mousedownX=e.clientX;
+      mousedownY=e.clientY;
+      // 四条侧边位置
+      t0=model.offsetTop-h/2;
+      b0=model.offsetTop+h-h/2;
+      l0=model.offsetLeft-w/2;
+      r0=model.offsetLeft+w-w/2;
+      // 设置方块识别范围，侧边靠内5px
+      areaT=t0+10;
+      areaB=b0-10;
+      areaL=l0+10;
+      areaR=r0-10;console.log(areaL+"  "+areaR+"  "+areaT+"  "+areaB);
+      // 标志，判断是否需要改变此方向，鼠标在外围时改变
+      changeL=mousedownX<areaL;
+      changeR=mousedownX>areaR;
+      changeT=mousedownY<areaT;
+      changeB=mousedownY>areaB;console.log(changeL+"  "+changeR+"  "+changeT+"  "+changeB);
+
+      // 鼠标点击位置相对于目标左侧边框的距离=点击位置相对于浏览器最左边-目标左边框相对于浏览器最左边
+      diffx=mousedownX-model.offsetLeft;
+      diffy=mousedownY-model.offsetTop;
+
+      // 如果在缩放区域，禁止拖动
+      if(changeL||changeR||changeT||changeB) {
+        off=0;
+        offf=1;
+      }else {
+        off=1;
+        offf=0;
+      }
+
+      // ie8，取消默认行为，设置全局捕获
+      if(model.setCapture){
+        model.setCapture();
+      }
+    }
+    // 可以开始时，鼠标移动，目标跟随移动
+    model.onmousemove=function(e){
+      if(!off) return;//判断是否可以拖动
+      var e=e||window.event;
+      var left=e.clientX-diffx;
+      var top=e.clientY-diffy;
+      // 因为为了居中设置了transform，所以边界限制时注意补齐目标宽高的一半
+      if(left<model.offsetWidth/2){
+        left=model.offsetWidth/2;
+      }else if(left>window.innerWidth-model.offsetWidth+model.offsetWidth/2){
+        left=window.innerWidth-model.offsetWidth+model.offsetWidth/2;
+      }
+      if(top<model.offsetHeight/2){
+        top=model.offsetHeight/2;
+      }else if(top>window.innerHeight-model.offsetHeight+model.offsetHeight/2){
+        top=window.innerHeight-model.offsetHeight+model.offsetHeight/2;
+      }
+      model.style.left=left+'px';
+      model.style.top=top+'px';
+    }
+    // 缩放，即使在目标外侧也可以
+    document.onmousemove=function(e){
+      if(!offf) return;
+      var width=500,height=300;
+      // 若此方向被拖动，改变宽度
+      if(changeL){
+        width=mousedownX-e.clientX+w;
+        width=width<300?300:width;
+        model.style.width=width+'px';
+      }
+      if(changeR){
+        width=e.clientX-mousedownX+w;
+        width=width<300?300:width;
+        model.style.width=width+'px';
+      }
+      if(changeT){
+        height=mousedownY-e.clientY+h;
+        height=height<200?200:height;
+        model.style.height=height+'px';
+      }
+      if(changeB){
+        height=e.clientY-mousedownY+h;
+        height=height<200?200:height;
+        model.style.height=height+'px';
+      }console.log(width+"  "+height);
+    }
+    // 鼠标抬起，重置开关标志位，不再随着移动
+    model.onmouseup=function(e){
+      off=0;
+    }
+    // 缩放
+    document.onmouseup=function(e){
+      offf=0;
+      if(model.releaseCapture){
+        model.releaseCapture();
+      }
+    }
+  </script>
+</body>
+</html>
