@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UI组件之排序表格</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+      font-size: 20px;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    .wrapper {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+    }
+    button {
+      padding: 10px 20px;
+      border-style: none;
+      background-color: #2E78B9;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 20px;
+    }
+    table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      text-align: center;
+    }
+    table thead tr td {
+      background-color: #5B5B5B;
+      color: #fff;
+      position: relative;
+    }
+    table td {
+      border: 2px solid #D7D7D7;
+      padding: 10px 40px;
+    }
+    .topBtn,.botBtn {
+      position: absolute;
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      right: 15px;
+      display: none;
+    }
+    .topBtn {
+      top: 10px;
+      border-bottom: 8px solid #fff;
+    }
+    .botBtn {
+      bottom: 10px;
+      border-top: 8px solid #fff;
+    }
+    .btns {
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div id="inserttable"></div>
+    <div class="btns"><button id="sortbtn">排序</button></div>
+  </div>
+  
+  <script type="text/javascript">
+    // 表格功能接口
+    var table={
+      data:[],
+      target:null,
+      // 初始化表格，表格数据，表格插入位置，默认所有列都有排序功能
+      init:function(data,target){
+        this.data=data;
+        this.target=target;
+        this.create();
+        this.addSortAll();
+      },
+      // 根据数据生成表格，并显示在目标位置
+      create:function(){
+        var tablenode=document.createElement("table");
+        var textStr="<thead>";
+        for (var i = 0; i < this.data[0].length; i++) {
+          textStr+="<td>"+this.data[0][i]+"<span class='topBtn'></span><span class='botBtn'></span></td>";
+        }
+        textStr+="</thead><tbody>";
+        for (var i = 1; i < this.data.length; i++) {
+          textStr+="<tr>";
+          for (var j = 0; j < this.data[i].length; j++) {
+            textStr+="<td>"+this.data[i][j]+"</td>";
+          }
+          textStr+="</tr>";
+        }
+        textStr+="</tbody>";
+        tablenode.innerHTML=textStr;
+        this.target.appendChild(tablenode);
+      },
+      // 根据标题为所有增添排序功能
+      addSortAll:function(){
+        for (var i = 0; i < this.data[0].length; i++) {
+          this.addSort(i);
+        }
+      },
+      // 隐藏所有排序按钮
+      removeSortAll:function(){
+        for (var i = 0; i < this.data[0].length; i++) {
+          this.removeSort(i);
+        }
+      },
+       // 为第n列标题增添排序功能并显示
+      addSort:function(n){
+        var spantops=this.target.getElementsByClassName('topBtn');
+        var spanbots=this.target.getElementsByClassName('botBtn');
+        spantops[n].style.display="inline-block";
+        // 绑定升序事件
+        spantops[n].onclick=function(e){
+          table.sortData(n,true);
+        };
+        spanbots[n].style.display="inline-block";
+        // 绑定降序事件
+        spanbots[n].onclick=function(e){
+          table.sortData(n,false);
+        }
+      },
+      // 隐藏第n列排序按钮
+      removeSort:function(n){
+        var spantops=this.target.getElementsByClassName('topBtn');
+        var spanbots=this.target.getElementsByClassName('botBtn');
+        spantops[n].style.display="none";
+        spanbots[n].style.display="none";
+      },
+      // 对第n列tbody部分进行按direct进行升序或降序，或自定义排序函数fun，排序后更新页面
+      sortData:function(n,direct,fun){
+        var data1=this.data.shift();
+        if(fun!=undefined){
+          this.data.sort(fun(n));
+        }else if(direct){
+          this.data.sort(table.compare1(n));
+        }else{
+          this.data.sort(table.compare2(n));
+        }
+        this.data.unshift(data1);
+        this.update();
+      },
+      // 根据data更新tbody顺序
+      update:function(){
+        var tbody=this.target.getElementsByTagName("tbody")[0];
+        var tbodyStr="";
+        for (var i = 1; i < this.data.length; i++) {
+          tbodyStr+="<tr>";
+          for (var j = 0; j < this.data[i].length; j++) {
+            tbodyStr+="<td>"+this.data[i][j]+"</td>";
+          }
+          tbodyStr+="</tr>";
+        }
+        tbody.innerHTML=tbodyStr;
+
+      },
+      // 升序函数
+      compare1:function(n){
+        return function(a,b){
+          var value1=a[n];
+          var value2=b[n];
+          return value1-value2;
+        }
+      },
+      // 降序函数
+      compare2:function(n){
+        return function(a,b){
+          var value1=a[n];
+          var value2=b[n];
+          return value2-value1;
+        }
+      }
+    }
+
+    var data=[['姓名','语文','英语','数学','总分'],['小明',80,90,70,240],['小红',90,60,90,240],['小亮',60,100,70,230]];
+    var parent=document.getElementById("inserttable");
+    table.init(data,parent);//初始化
+    table.removeSort(0);//第一列没有排序功能
+
+    var sortbtn=document.getElementById("sortbtn");
+    sortbtn.onclick=function(){
+      table.sortData(3,false);//第三列降序
+    };
+
+  </script>
+</body>
+</html>
