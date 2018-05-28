@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>使用CSS实现折叠面板</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+      font-size: 20px;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    body {
+      padding: 20px;
+    }
+    a {
+      color: #fff;
+      font-size: 20px;
+    }
+    .panel-group {
+    }
+    .panel {
+      margin: 10px 0;
+    }
+    .panel-heading {
+      background: gray;
+    }
+    .panel-title {
+      padding: 10px;
+    }
+    .panel-collapse {
+      padding: 10px;
+      border: 1px solid gray;
+      display: none;
+    }
+    .panel-body {
+      word-wrap: break-word;
+    }
+    .panel-collapse:target {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel-group">
+    <div class="panel">
+      <div class="panel-heading">
+        <h4 class="panel-title"><a href="#collapse1">item1</a></h4>
+      </div>
+      <div class="panel-collapse" id="collapse1">
+        <div class="panel-body">collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1collapse1</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-heading">
+        <h4 class="panel-title"><a href="#collapse2">item2</a></h4>
+      </div>
+      <div class="panel-collapse" id="collapse2">
+        <div class="panel-body">collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2collapse2</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-heading">
+        <h4 class="panel-title"><a href="#collapse3">item3</a></h4>
+      </div>
+      <div class="panel-collapse" id="collapse3">
+        <div class="panel-body">collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3collapse3</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

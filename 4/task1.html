@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>有趣的鼠标悬浮模糊效果</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+      font-size: 20px;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    .wrapper {
+      width: 397px;
+      height: 199px;
+      position: relative;
+    }
+    body {
+      padding: 20px;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    .wrapper:hover img {
+      opacity: 0.5;
+    }
+    .container {
+      position: absolute;
+      left:50px;
+      top: 30px;
+      width: 297px;
+      height: 139px;
+      visibility: hidden;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .wrapper:hover .container {
+      visibility: visible;
+    }
+    .container::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 0;
+      top: 0;
+      height: 100%;
+      border-top: 5px solid #fff;
+      border-bottom: 5px solid #fff;
+      transition: all 0.8s;
+      overflow: hidden;
+    }
+    .wrapper:hover .container::before {
+      width: 101%;
+      left: 0;
+    }
+    .container::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 50%;
+      height: 0;
+      border-left: 2px solid #fff;
+      border-right: 2px solid #fff;
+      transition: all 0.8s;
+      overflow: hidden;
+    }
+    .wrapper:hover .container::after {
+      height: 102%;
+      top: 0;
+    }
+    @keyframes translategradient {
+      from {background-position: 0% 0%;}
+      to {background-position: -100% 0%;}
+    }
+    .title {
+      margin-bottom: 20px;
+      background-image: -webkit-linear-gradient(left,#3498db,#f47920 10%,#d71345 20%,#f7acbc 30%,#ffd400 40%,#3498db 50%,#f47920 60%,#d71345 70%,#f7acbc 80%,#ffd400 90%,#3498db);
+      background-size: 200% 100%;
+      /*从指定位置开始绘制背景，text只绘制文本部分，其他部分背景都已剪切掉*/
+      -webkit-background-clip: text;
+      /*将文字颜色设为透明，显示背景*/
+      color: transparent;
+      /*-webkit-text-fill-color: transparent;*/
+      animation: translategradient 3s linear infinite;
+    }
+    @keyframes colorchange {
+      from {color: green;}
+      to {color: blue;}
+    }
+    .signup {
+      animation: colorchange 2s linear infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <img src="./../images/4-1/bg.png" alt="bg">
+    <div class="container">
+      <h2 class="title">欢迎参加百度前端技术学院</h2>
+      <p class="signup">点击报名</p>
+    </div>
+  </div>
+</body>
+</html>

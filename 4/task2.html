@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义checkbox，radio样式</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+      font-size: 20px;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    .wrapper {
+      width: 397px;
+      height: 199px;
+      position: relative;
+    }
+    body {
+      padding: 20px;
+    }
+    div {
+      margin: 10px;
+    }
+    input,label {
+      font-size: 20px;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+    input[type="radio"]+label::before {
+      content: "";
+      height: 0.8em;
+      width: 0.8em;
+      background-image: url("./../images/4-2/radio.png");
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: left center;
+      display: inline-block;
+      margin: 0 0.3em;
+      box-sizing: border-box;
+    }
+    input[type="radio"]:checked+label::before {
+      background-position: right center;
+    }
+    input[type="checkbox"] {
+      display: none;
+    }
+    input[type="checkbox"]+label::before {
+      content: "";
+      height: 0.8em;
+      width: 0.8em;
+      background-image: url("./../images/4-2/checkbox.png");
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: left center;
+      display: inline-block;
+      margin: 0 0.3em;
+      box-sizing: border-box;
+    }
+    input[type="checkbox"]:checked+label::before {
+      background-position: right center;
+    }
+  </style>
+</head>
+<body>
+  <div class="radio">
+    <input type="radio" name="radio" id="radio1"><label for="radio1">1</label>
+    <input type="radio" name="radio" id="radio2" checked><label for="radio2">2</label>
+  </div>
+  <div class="checkbox">
+    <input type="checkbox" name="checkbox" id="checkbox1"><label for="checkbox1">1</label>
+    <input type="checkbox" name="checkbox" id="checkbox2" checked><label for="checkbox2">2</label>
+    <input type="checkbox" name="checkbox" id="checkbox3"><label for="checkbox3">3</label>
+  </div>
+</body>
+</html>

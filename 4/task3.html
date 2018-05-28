@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义网页右键菜单</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+      font-size: 20px;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    #menu {
+      display: none;
+      position: fixed;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="contanier">
+    <p>右键点击</p>
+    <ul id="menu">
+      <li>menu1</li>
+      <li>menu2</li>
+      <li>menu3</li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    window.onload=function(){
+      var region=document.getElementById("contanier");
+      var menu=document.getElementById("menu");
+      var lis=menu.getElementsByTagName("li");
+      // 网页可见区域宽高
+      var browerWidth=document.documentElement.clientWidth||document.body.clientWidth;
+      var browerHeight=document.documentElement.clientHeight||document.body.clientHeight;
+
+      document.oncontextmenu=function(event){
+        menu.style.display="block";
+        // 网页被卷去的长度
+        var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+        var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+        // 鼠标当前位置,相对于文档
+        var clientX=event.clientX;
+        var clientY=event.clientY;
+        // 菜单宽高
+        var offsetWidth=menu.offsetWidth;
+        var offsetHeight=menu.offsetHeight;
+        var top,left;
+
+        if(clientY+offsetHeight>=browerHeight){
+          top=clientY-offsetHeight;
+        }else {
+          top=clientY;
+        }
+         if(clientX+offsetWidth>=browerWidth){
+          left=clientX-offsetWidth;
+        }else {
+          left=clientX;
+        }
+
+        menu.style.left=left+'px';
+        menu.style.top=top+'px';
+
+        // 阻止默认行为，也即阻止浏览器默认的右键菜单
+        event.preventDefault();
+        // return false;
+      }
+      // 左键单击任何地方，菜单取消
+      document.onclick=function(){
+        menu.style.display="none";
+      }
+      // 点击右键菜单项，处理事件，并阻止冒泡
+      for (var i = 0; i < lis.length; i++) {
+        lis[i].onclick=function(e){
+          alert(this.innerHTML);
+          // 阻止冒泡
+          e.stopPropagation();
+        }
+      }
+    }
+  </script>
+</body>
+</html>
