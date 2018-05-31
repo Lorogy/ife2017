@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>正则表达式之简易markdown文件解析器</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    .wrapper {
+      width: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      min-height: 800px;
+    }
+    .left {
+      flex: auto;
+    }
+    .left textarea {
+      width: 100%;
+      height: 100%;
+      background: #272822;
+      color: white;
+      line-height: 20px;
+      padding: 10px;
+    }
+    .right {
+      flex: auto;
+      padding: 10px;
+    }
+    .hr {
+      flex: none;
+      width: 20px;
+      background: gray;
+    }
+    .code {
+      background: #272822;
+      width: 80%;
+      margin: 5px auto;
+      color: white;
+    }
+    .quote {
+      background: #fee9cc;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="left" id="left">
+      <textarea id="inputcontent"></textarea>
+    </div>
+    <div class="hr"></div>
+    <div class="right" id="right"></div>
+  </div>
+  <script type="text/javascript">
+    var inputcontent=document.getElementById("inputcontent");
+    var right=document.getElementById("right");
+    var innerText="";
+    var content="";
+    inputcontent.oninput=function(e){
+      inputcontent=document.getElementById("inputcontent");
+      content=inputcontent.value;console.log(content);
+      innerText=handleReg(content);
+      right.innerHTML=innerText;
+    }
+    function handleReg(content){
+      var result="\n"+content;
+      var i=0,newitem,temp;
+      // #-######，h1-h6
+      var regh1=/\n# \S+/g;
+      temp=result.match(regh1);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          newitem=temp[i].replace(/^\n# /,"");
+          result=result.replace(temp[i],'<h1>'+newitem+'</h1>');
+        }
+      }
+      var regh2=/\n## \S+/g;
+      temp=result.match(regh2);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          newitem=temp[i].replace(/^\n## /,"");
+          result=result.replace(temp[i],'<h2>'+newitem+'</h2>');
+        }
+      }
+      var regh3=/\n### \S+/g;
+      temp=result.match(regh3);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          newitem=temp[i].replace(/^\n### /,"");
+          result=result.replace(temp[i],'<h3>'+newitem+'</h3>');
+        }
+      }
+      var regh4=/\n#### \S+/g;
+      temp=result.match(regh4);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          newitem=temp[i].replace(/^\n#### /,"");
+          result=result.replace(temp[i],'<h4>'+newitem+'</h4>');
+        }
+      }
+      var regh5=/\n##### \S+/g;
+      temp=result.match(regh5);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          newitem=temp[i].replace(/^\n##### /,"");
+          result=result.replace(temp[i],'<h5>'+newitem+'</h5>');
+        }
+      }
+      var regh6=/\n###### \S+/g;
+      temp=result.match(regh6);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          newitem=temp[i].replace(/^\n###### /,"");
+          result=result.replace(temp[i],'<h6>'+newitem+'</h6>');
+        }
+      }
+      // 末尾加..换行
+      var regwrap=/  \n/g;
+      temp=result.match(regwrap);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          result=result.replace(temp[i],'<br>');
+        }
+      }
+
+      // 列表 * 1. 
+      var regul=/\n\* .+/g;
+      temp=result.match(regul);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          newitem=temp[i].replace(/^\n\* /,"");
+          if(i==0){
+            result=result.replace(temp[i],'<ul><li>'+newitem+'</li>');
+          }else if(i==temp.length-1){
+            result=result.replace(temp[i],'<li>'+newitem+'</li></ul>');
+          }else {
+            result=result.replace(temp[i],'<li>'+newitem+'</li>');
+          }
+        }
+      }
+      var regol=/\n\d\. .+/g;
+      temp=result.match(regol);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          newitem=temp[i].replace(/^\n\d\. /,"");
+          if(i==0){
+            result=result.replace(temp[i],'<ol><li>'+newitem+'</li>');
+          }else if(i==temp.length-1){
+            result=result.replace(temp[i],'<li>'+newitem+'</li></ol>');
+          }else {
+            result=result.replace(temp[i],'<li>'+newitem+'</li>');
+          }
+        }
+      }
+
+      // 代码``` ```
+      var regcode=/^\n```\n.[\s\S]*\n```$/g;
+      temp=result.match(regcode);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          newitem=temp[i].replace(/^\n```\n/,"").replace(/\n```$/,"").replace(/\n/g,"<br>");
+          result=result.replace(temp[i],'<div class="code">'+newitem+'</div>');
+        }
+      }
+      // 引用` `
+      var regquote=/`[^`]*`/g;
+      temp=result.match(regquote);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          newitem=temp[i].replace(/^`/,"").replace(/`$/,"");
+          result=result.replace(temp[i],'<span class="quote">'+newitem+'</span>');
+        }
+      }
+
+      // 图片![alt](src)
+      var regimg=/!\[.*\]\(.*\)/g;
+      temp=result.match(regimg);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          var alt=temp[i].match(/\[.*\]/)[0].replace(/^\[/,"").replace(/\]$/,"");
+          var path=temp[i].match(/\(.*\)/)[0].replace(/^\(/,"").replace(/\)$/,"");
+          result=result.replace(temp[i],'<img alt="'+alt+'" src="'+path+'">');
+        }
+      }
+
+      // 链接
+      var reglink=/\[@.*\]\(http.*\)/g;
+      temp=result.match(reglink);console.log(temp);
+      if(temp!=null){
+        for (i = 0; i < temp.length; i++) {
+          var title=temp[i].match(/\[@.*\]/)[0].replace(/^\[@/,"").replace(/\]$/,"");
+          var link=temp[i].match(/\(.*\)/)[0].replace(/^\(/,"").replace(/\)$/,"");
+          result=result.replace(temp[i],'<a href="'+link+'">'+title+'</a>');
+        }
+      }
+
+
+      console.log(result.replace(/^\n/,""));
+      return result.replace(/^\n/,"");
+    }
+  </script>
+</body>
+</html>
