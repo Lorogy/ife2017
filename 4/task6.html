@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS3实现3D轮播图</title>
+  <style type="text/css">
+    /*common*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: SimHei;
+      font-size: 20px;
+    }
+    .clearfix::before,.clearfix::after {
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .clearfix:after {clear: both;}
+    .clearfix {zoom: 1;}
+    ul {
+      list-style: none;
+    }
+    .imgsbox {
+      margin: 200px auto;
+      width: 500px;
+      height: 300px;
+      position: relative;
+      transform-style: preserve-3d;
+      perspective: 600px;
+      border: 1px solid gray;
+    }
+    .imgsbox li {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -125px;
+      margin-top: -75px;
+      width: 250px;
+      height: 150px;
+    }
+    .imgsbox li img {
+      width: 100%;
+      height: 100%;
+    }
+    .imgsbox li {
+      visibility: hidden;
+    }
+    .imgsbox li:nth-of-type(1) {
+      animation: rotateimg 4s 0s linear infinite;
+    }
+    .imgsbox li:nth-of-type(2) {
+      transform: rotateY(-120deg) translateZ(250px);
+      animation: rotateimg 4s 1s linear infinite;
+    }
+    .imgsbox li:nth-of-type(3) {
+      transform: rotateY(-180deg) translateZ(250px);
+      animation: rotateimg 4s 2s linear infinite;
+    }
+    .imgsbox li:nth-of-type(4) {
+      transform: rotateY(-240deg) translateZ(250px);
+      animation: rotateimg 4s 3s linear infinite;
+    }
+    @keyframes rotateimg {
+      0% {transform: rotateY(0deg) translateZ(250px) scaleX(1.2) scaleY(1.2); visibility: visible; opacity: 1;}
+      2% {transform: rotateY(0deg) translateZ(250px) scaleX(1.2) scaleY(1.2); visibility: visible; opacity: 1;}
+      25% {transform: rotateY(-90deg) translateZ(250px); visibility: visible; opacity: 0.5;}
+      50% {transform: rotateY(-180deg) translateZ(250px); visibility: visible; opacity: 0.5;}
+      75% {transform: rotateY(-270deg) translateZ(250px); visibility: visible; opacity: 0.5;}
+      98% {transform: rotateY(-360deg) translateZ(250px) scaleX(1.2) scaleY(1.2); visibility: visible; opacity: 1;}
+      100% {transform:rotateY(-360deg) translateZ(250px) scaleX(1.2) scaleY(1.2); visibility: visible; opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <ul class="imgsbox" id="imgsbox">
+    <li><img src="./../images/4-6/1.jpg"></li>
+    <li><img src="./../images/4-6/2.jpg"></li>
+    <li><img src="./../images/4-6/3.jpg"></li>
+    <li><img src="./../images/4-6/4.jpg"></li>
+  </ul>
+</body>
+</html>
