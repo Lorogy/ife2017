@@ -6,11 +6,13 @@
 </head>
 <body>
   <script type="text/javascript">
+    var content="";
     var num=[18812011232,18812312,12345678909];
     var reg=/1[3,4,5,7,8]\d{9}/;//11位，1开头第二位为3或4或5或7或8
     for (var i = 0; i < num.length; i++) {
       var result=reg.test(num[i]);
       console.log(num[i]+":"+result);
+      content+=num[i]+":"+result+"<br>";
     }
     var str=["foo foo bar","bar foo foo","foo bar bar foo","foo bar foo","foo barbar bar","bar barbar foo"];
     var reg2=/\s(\w+\s)\1+/g;//字符串前后端补空格，\1表示与前面括号内相同的匹配，即相邻重复
@@ -20,7 +22,9 @@
       var result3=reg2.test(item);
       console.log(str[i]+":"+result2);
       console.log(str[i]+":"+result3);
+      content+=str[i]+":"+result2+"&nbsp;&nbsp;"+result3+"<br>";
     }
+    document.write(content);
   </script>
 </body>
 </html>

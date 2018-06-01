@@ -19,14 +19,19 @@
     }
     .clearfix:after {clear: both;}
     .clearfix {zoom: 1;}
+    ul,ol {
+      margin-left: 15px;
+    }
     .wrapper {
       width: 100%;
       display: flex;
       flex-flow: row nowrap;
+      justify-content: space-between;
       min-height: 800px;
     }
     .left {
       flex: auto;
+      width: 49%;
     }
     .left textarea {
       width: 100%;
@@ -35,10 +40,12 @@
       color: white;
       line-height: 20px;
       padding: 10px;
+      resize: none;
     }
     .right {
       flex: auto;
       padding: 10px;
+      width: 49%;
     }
     .hr {
       flex: none;
@@ -46,35 +53,79 @@
       background: gray;
     }
     .code {
-      background: #272822;
-      width: 80%;
+      background: #EEF0F4;
+      width: 95%;
       margin: 5px auto;
-      color: white;
+      color: #000;
+      padding: 20px;
     }
     .quote {
-      background: #fee9cc;
+      background: #F9F2F4;
+      color: #C7254E;
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <div class="left" id="left">
-      <textarea id="inputcontent"></textarea>
+      <textarea id="inputcontent"># 一个非常简易的在线markdown文档编辑器
+<br>
+## 标题（h1-h6）
+# 标题一
+## 标题二
+### 标题三
+#### 标题四
+##### 标题五
+###### 标题六
+<br>
+## 有序列表（ol）
+1. item1
+2. item2
+3. item3
+<br>
+## 无序列表（ul）
+* item1
+* item2
+* item3
+<br>
+## 引用
+引用一段`console.log("hello world!");`
+<br>
+## 代码
+```
+var a=1;
+var b=2;
+var c=a+b;
+```
+<br>
+## 换行（两个空格）
+第一行  
+第二行  
+<br>
+## 图片
+![122](./../images/4-6/1.jpg)  
+<br>
+## 链接（a）
+[@lorogy](http://www.lorogy.top/)</textarea>
     </div>
     <div class="hr"></div>
     <div class="right" id="right"></div>
   </div>
+
   <script type="text/javascript">
     var inputcontent=document.getElementById("inputcontent");
     var right=document.getElementById("right");
     var innerText="";
     var content="";
-    inputcontent.oninput=function(e){
+    inputcontent.oninput=inputEvent();
+
+    function inputEvent(){
       inputcontent=document.getElementById("inputcontent");
-      content=inputcontent.value;console.log(content);
+      content=inputcontent.value;
       innerText=handleReg(content);
       right.innerHTML=innerText;
     }
+
     function handleReg(content){
       var result="\n"+content;
       var i=0,newitem,temp;
@@ -167,7 +218,7 @@
       }
 
       // 代码``` ```
-      var regcode=/^\n```\n.[\s\S]*\n```$/g;
+      var regcode=/\n```\n.[^`]*\n```/g;
       temp=result.match(regcode);
       if(temp!=null){
         for (i = 0; i < temp.length; i++) {
@@ -206,8 +257,6 @@
           result=result.replace(temp[i],'<a href="'+link+'">'+title+'</a>');
         }
       }
-
-
       console.log(result.replace(/^\n/,""));
       return result.replace(/^\n/,"");
     }

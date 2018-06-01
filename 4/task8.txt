@@ -1,0 +1,39 @@
+# 一个非常简易的在线markdown文档编辑器
+<br>
+## 图片
+![122](./../images/4-6/1.jpg)  
+<br>
+## 标题（h1-h6）
+# 标题一
+## 标题二
+### 标题三
+#### 标题四
+##### 标题五
+###### 标题六
+<br>
+## 有序列表（ol）
+1. item1
+2. item2
+3. item3
+<br>
+## 无序列表（ul）
+* item1
+* item2
+* item3
+<br>
+## 引用
+引用一段`console.log("hello world!");`
+<br>
+## 代码
+```
+var a=1;
+var b=2;
+var c=a+b;
+```
+<br>
+## 换行（两个空格）
+第一行  
+第二行  
+<br>
+## 链接（a）
+[@lorogy](http://www.lorogy.top/)
