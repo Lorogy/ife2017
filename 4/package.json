@@ -1,6 +1,0 @@
-{
-  "devDependencies": {
-    "babel-core": "^5.8.38",
-    "babel-preset-env": "^1.7.0"
-  }
-}
